@@ -3,7 +3,11 @@
         <span class="gloss-src src-num">{{ gloss.num }}</span>
         <v-tooltip bottom color="rgba(255, 115, 133, 0.85)">
             <template v-slot:activator="{ on, attrs }">
-                <span class="gloss-src src-doc" v-bind="attrs" v-on="on">{{ gloss.file }}</span>
+                <span class="gloss-src src-doc" v-bind="attrs" v-on="on">
+                    <router-link :to="'/long-text?id=' + gloss.file" >
+                        <v-icon dense color="blue">mdi-link-box-variant-outline</v-icon>
+                    </router-link>
+                </span>
             </template>
 
             <template v-for="(value, name) in gloss.meta">
@@ -84,7 +88,7 @@
 import { Highlight } from "@/helpers.js";
 
 export default {
-    props: ["gloss", "query", "showplaintext"],
+    props: ["gloss", "query", "showplaintext", "ignoreCharSet"],
     data() {
         return {
             audio_url: "https://yongfu.name/FormCorp-audio",  // no slash at end
@@ -102,7 +106,8 @@ export default {
                         Highlight.highlight(
                             tk,
                             query_str,
-                            this.query.regex
+                            this.query.regex,
+                            this.ignoreCharSet
                         )
                     )
                     .join(" ");
@@ -110,7 +115,8 @@ export default {
                 return Highlight.highlight(
                     this.gloss.ori.join(" "),
                     query_str,
-                    this.query.regex
+                    this.query.regex,
+                    this.ignoreCharSet
                 );
             else return this.gloss.ori.join(" ");
         },
@@ -123,17 +129,20 @@ export default {
                     Highlight.highlight(
                         tup[0],
                         query_str,
-                        this.query.regex
+                        this.query.regex,
+                        this.ignoreCharSet
                     ),
                     Highlight.highlight(
                         tup[1],
                         query_str,
-                        this.query.regex
+                        this.query.regex,
+                        this.ignoreCharSet
                     ),
                     Highlight.highlight(
                         tup[2],
                         query_str,
-                        this.query.regex
+                        this.query.regex,
+                        this.ignoreCharSet
                     )
                 ]);
             else return this.gloss.gloss;
@@ -146,7 +155,8 @@ export default {
                     Highlight.highlight(
                         sent,
                         this.query.query,
-                        this.query.regex
+                        this.query.regex,
+                        this.ignoreCharSet
                     )
                 );
             else return this.gloss.free;
@@ -196,13 +206,14 @@ span.src-num::after {
     content: ".";
 }
 span.src-doc {
-    background: rgba(53, 53, 53, 0.664);
     color: white;
-    border-radius: 8px;
     padding: 2px 5px;
     float: right;
     font-family: "Monaco", "Consolas", "Courier New", Courier, monospace;
     font-size: 0.63em;
+}
+span.gloss-src a {
+    text-decoration: none;
 }
 
 .gloss--glossed:after {

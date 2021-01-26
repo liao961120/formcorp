@@ -3,9 +3,9 @@
         <v-main>
             <v-container class="fill-height" fluid>
                 <v-row align="center" class="mx-7 pa-0 full-width">
-                    <keep-alive>
-                        <router-view></router-view>
-                    </keep-alive>
+                    <!-- <keep-alive> -->
+                        <router-view v-bind:drawer="drawer"></router-view>
+                    <!-- </keep-alive> -->
                 </v-row>
             </v-container>
         </v-main>
@@ -51,6 +51,9 @@ textarea {
 /* Highlight matched gloss */
 span.matchedtoken {
     background: rgba(255, 255, 0, 0.582);
+}
+span.fuzzy {
+    background: rgba(255, 187, 0, 0.507);
 }
 .gloss__line--free span.matchedtoken {
     background: rgba(136, 255, 0, 0.561);

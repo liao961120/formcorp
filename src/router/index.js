@@ -12,12 +12,12 @@ Vue.use(VueRouter)
     component: Search
   },
   {
-    path: '/lexicon',
-    name: 'Lexicon',
+    path: '/long-text',
+    name: 'LongText',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../components/glossary.vue')
+    component: () => import('../components/longText.vue')
   }
 ]
 
