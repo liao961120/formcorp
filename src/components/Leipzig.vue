@@ -4,7 +4,7 @@
         <v-tooltip bottom color="rgba(255, 115, 133, 0.85)">
             <template v-slot:activator="{ on, attrs }">
                 <span class="gloss-src src-doc" v-bind="attrs" v-on="on">
-                    <router-link :to="'/long-text?id=' + gloss.file" >
+                    <router-link :to="{path: '/long-text?id=' + gloss.file, hash: '#' + gloss.num}" >
                         <v-icon dense color="blue">mdi-link-box-variant-outline</v-icon>
                     </router-link>
                 </span>

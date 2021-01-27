@@ -9,7 +9,7 @@
 
         <!-- Top Menu bar -->
         <v-app-bar app color="blue-grey lighten-4" min-width="330">
-            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+            <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
             <v-row justify="center" align="center">
                 <v-col>
                     <v-text-field
@@ -123,7 +123,7 @@ export default {
     data() {
         return {
             search_results_key: 0,
-            drawer: null,
+            drawer: true,
             database: "https://yongfu.name/glossParser/all_lang-long-text.json",
             results: [],
             querytypes: [
@@ -284,7 +284,6 @@ export default {
                     this.infscroll += 30;
             }
         },
-
         forceReload: function() {
             this.search_results_key += 1;
         }

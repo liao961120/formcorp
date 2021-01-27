@@ -1,58 +1,75 @@
 <template>
-    <div>
-        <span class="gloss-src src-num">{{ gloss.num }}</span>
-
-        <div class="example gloss--glossed">
-            <p v-if="gloss.ori.length > 0" class="gloss__line--original gloss__line gloss__line--0">
-                <span>{{ this.gloss.ori.join(" ") }}</span>
-            </p>
-
-            <!-- Glossed Lines -->
-            <div class="gloss__words">
-                <div
-                    class="gloss__word"
-                    v-for="(tup, idx) in this.gloss.gloss"
-                    :key="idx + Math.random()"
-                >
-                    <p class="gloss__line gloss__line--1">
-                        <span>{{ tup[0] }}</span>
-                    </p>
-                    <p class="gloss__line gloss__line--2">
-                        <span>{{ tup[0] }}</span>
-                    </p>
-                    <p class="gloss__line gloss__line--3">
-                        <span>{{ tup[0] }}</span>
-                    </p>
-                </div>
-            </div>
-
-            <!-- Free Lines -->
-            <p
-                v-for="(line, i) in this.gloss.free"
-                :key="i + Math.random()"
-                :class="`gloss__line--free gloss__line gloss__line--${i + 4}`"
-            >
-                <span>{{ line }}</span>
-            </p>
-
+    <div class="outer">
+        <div class="IU">
+            <span class="gloss-src src-num">{{ gloss.num }}</span>
             <template v-if="'video' in gloss.meta">
                 <button 
+                    class="iu-audio"
+                    title="IU發音"
                     v-if="gloss.iu_a_span[0] != null & gloss.iu_a_span[1] != null" 
                     v-on:click="playAudio(get_audio_url_by_split_time(gloss.iu_a_span[0], gloss.iu_a_span[1], gloss.meta.video))">
-                <v-icon>mdi-play-circle-outline</v-icon>
+                <v-icon small color="blue lighten-2">mdi-volume-high</v-icon>
                 </button>
             </template>
+
+            <div class="example gloss--glossed">
+                <p v-if="gloss.ori.length > 0" class="gloss__line--original gloss__line gloss__line--0">
+                    <span>{{ this.gloss.ori.join(" ") }}</span>
+                </p>
+
+                <!-- Glossed Lines -->
+                <div class="gloss__words">
+                    <div
+                        class="gloss__word"
+                        v-for="(tup, idx) in this.gloss.gloss"
+                        :key="idx + Math.random()"
+                    >
+                        <p class="gloss__line gloss__line--1">
+                            <span>{{ tup[0] }}</span>
+                        </p>
+                        <p class="gloss__line gloss__line--2">
+                            <span>{{ tup[0] }}</span>
+                        </p>
+                        <p class="gloss__line gloss__line--3">
+                            <span>{{ tup[0] }}</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Free Lines -->
+                <p
+                    v-for="(line, i) in this.gloss.free"
+                    :key="i + Math.random()"
+                    :class="`gloss__line--free gloss__line gloss__line--${i + 4}`"
+                >
+                    <span>{{ line }}</span>
+                </p>
+            </div>
+        </div>
+
+        <div v-if="gloss.s_end" class="full-sent-audio">
+            <button 
+                class="sent-audio"
+                title="例句發音"
+                v-if="gloss.s_a_span[0] != null & gloss.s_a_span[1] != null" 
+                v-on:click="playAudio(get_audio_url_by_split_time(gloss.s_a_span[0], gloss.s_a_span[1], gloss.meta.video))">
+                <v-icon dense color="white">mdi-volume-high</v-icon>
+
+                <span v-if="lastSentEndNum[0] + 1 != gloss.num">
+                    {{ lastSentEndNum[0] + 1 }} - {{ gloss.num }}
+                </span>
+                <span v-else>{{ gloss.num }}</span>
+            </button>
         </div>
     </div>
 </template>
 
 <script>
 export default {
-    props: ["gloss", "showplaintext"],
+    props: ["gloss", "lastSentEndNum"],
     data() {
         return {
             audio_url: "https://yongfu.name/FormCorp-audio",  // no slash at end
-            plain_text_gloss: "",
             /* See https://yongfu.name/gloss-search/2020_Budai_Rukai/data.json for data format*/
         };
     },
@@ -62,30 +79,6 @@ export default {
             audio.volume = 1.0;
             audio.play();
         },
-        toPlainText(gloss) {
-            const ori =
-                gloss.ori.length > 0 
-                    ? gloss.ori.join(" ") + "\n\n" 
-                    : "";
-            const ori_align =
-                gloss.gloss.length > 0
-                    ? gloss.gloss.map(x => x[0]).join("\t") + "\n"
-                    : "";
-            const eng_align =
-                gloss.gloss.length > 0
-                    ? gloss.gloss.map(x => x[1]).join("\t") + "\n"
-                    : "";
-            const ch_align =
-                gloss.gloss.length > 0
-                    ? gloss.gloss.map(x => x[2]).join("\t") + "\n\n"
-                    : "";
-            const en_free = gloss.free[0] ? gloss.free[0] + "\n" : "";
-            const ch_free = gloss.free[1] ? gloss.free[1] : "";
-
-            this.plain_text_gloss = `${ori}${ori_align}${eng_align}${ch_align}${en_free}${ch_free}`;
-            this.showplaintext = true;
-        },
-
         get_audio_url_by_split_time(start_time, end_time, ori_audio) {
             const start = (start_time % 1 == 0) ? start_time + ".0" : start_time.toString();
             const end = (end_time % 1 == 0) ? end_time + ".0" : end_time.toString();
@@ -95,9 +88,50 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
+div.outer {
+    margin: 0;
+    padding: 0;
+}
+div.outer > div.IU {
+  /* border-radius: 10px; */
+  padding: 0 0 0.15em 0.5em;
+  margin: 0 0em;
+  margin-top: -2px;
+}
+div.group1 > div.IU {
+  background: rgba(197, 197, 197, 0.212);
+  border: solid 2px white;
+  border-radius: 4px;
+}
+div.group0 > div.IU {
+  border: solid 2px rgba(211, 211, 211, 0.452);
+  border-radius: 4px;
+}
+div.tohash > div.IU {
+  background: rgba(255, 255, 0, 0.335);
+}
+
+div.full-sent-audio {
+    display: block;
+    width: 100%;
+    border-radius: 6px;
+    margin: 0.5em auto;
+    padding: 0.55em;
+    background: rgb(161, 0, 161);
+}
+div.full-sent-audio span {
+    font-size: 0.73em;
+    color: white;
+    padding-left: 0.2em;
+}
+button.iu-audio {
+    display: inline-block;
+    padding-left: 0.2em;
+}
+
+
+
 span.gloss-src {
     font-size: 0.75em;
 }
@@ -114,6 +148,7 @@ span.src-doc {
 span.gloss-src a {
     text-decoration: none;
 }
+
 
 .gloss--glossed:after {
     clear: left;

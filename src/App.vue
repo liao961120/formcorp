@@ -3,9 +3,9 @@
         <v-main>
             <v-container class="fill-height" fluid>
                 <v-row align="center" class="mx-7 pa-0 full-width">
-                    <!-- <keep-alive> -->
-                        <router-view v-bind:drawer="drawer"></router-view>
-                    <!-- </keep-alive> -->
+                    <keep-alive>
+                        <router-view v-bind:drawer="drawer" :key="$route.fullPath"></router-view>
+                    </keep-alive>
                 </v-row>
             </v-container>
         </v-main>
