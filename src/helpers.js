@@ -45,5 +45,5 @@ function myReplace3(str) {
 function normToken(x, ignoreCharSet) {
     for (var i = 0; i < ignoreCharSet.length; i++)
         x = x.replaceAll(ignoreCharSet[i], "")
-    return x
+    return x.toLowerCase()
 }

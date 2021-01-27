@@ -1,6 +1,6 @@
 <template>
   <!-- Left drawer -->
-  <v-navigation-drawer width="268" permanent expand-on-hover app>
+  <v-navigation-drawer width="268" clipped permanent expand-on-hover app>
     <v-list dense>
       <v-list-item two-line class="mb-2 ml-0 pl-2">
         <v-list-item-avatar>
@@ -24,8 +24,7 @@
           <v-list-item-title>Search</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-
-      <v-list-item link router to="/long-text?id=Kanakanavu_Kanakanavu%2FkkvNr_dailylife_Angai#5">
+      <v-list-item link router to="long-text/Kanakanavu_Kanakanavu%2FkkvNr_dailylife_Angai#5">
         <v-list-item-action>
           <v-icon>mdi-translate</v-icon>
         </v-list-item-action>

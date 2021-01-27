@@ -8,9 +8,13 @@
         <v-btn v-if="infscroll > 60" @click="infscroll += 15;" :disabled="vue_seach_results.length <= infscroll" x-small>Show More</v-btn>
 
         <!-- Top Menu bar -->
-        <v-app-bar app color="blue-grey lighten-4" min-width="330">
+        <v-app-bar clipped-left app color="blue-grey lighten-4" min-width="330">
             <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
             <v-row justify="center" align="center">
+                <v-col cols="2">
+                    台大南島語料庫
+                </v-col>
+                
                 <v-col>
                     <v-text-field
                         spellcheck="false"
@@ -23,7 +27,9 @@
                     />
                 </v-col>
 
-                <v-col>
+                <!-- <v-spacer class="d-none d-md-flex mr-5"></v-spacer> -->
+
+                <v-col cols="2" class="d-none d-sm-flex">
                     <v-select
                         :items="docfilterSelect"
                         v-model="docfilter"
@@ -34,9 +40,7 @@
                     ></v-select>
                 </v-col>
 
-                <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
-
-                <v-col class="d-none d-sm-flex">
+                <v-col cols="2" class="d-none d-md-flex">
                     <v-select
                         :items="querytypes"
                         v-model="query.type"
@@ -47,7 +51,7 @@
                     ></v-select>
                 </v-col>
 
-                <v-col class="d-none d-sm-flex mr-3" sm="2" lg="1">
+                <v-col class="d-none d-md-flex mr-3" sm="2" lg="1">
                     <v-switch
                         v-model="query.regex"
                         value="1"
@@ -276,7 +280,7 @@ export default {
         normToken: function(x) {
             for (var i=0; i<this.ignoreCharSet.length; i++)
                 x = x.replaceAll(this.ignoreCharSet[i], "")
-            return x
+            return x.toLowerCase()
         },
         handleScroll: function() {
             if (this.vue_seach_results_lazy.length < this.vue_seach_results.length) {
@@ -307,7 +311,7 @@ export default {
 }
 
 .results > div:nth-child(2n + 1) {
-    background: rgba(197, 197, 197, 0.212);
+    background: rgba(153, 153, 153, 0.212);
     border: solid 2px white;
 }
 .results > div:nth-child(2n + 1):hover {

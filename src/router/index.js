@@ -12,7 +12,7 @@ Vue.use(VueRouter)
     component: Search
   },
   {
-    path: '/long-text',
+    path: '/long-text/:id',
     name: 'LongText',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
@@ -23,6 +23,7 @@ Vue.use(VueRouter)
 
 const router = new VueRouter({
   "routes": routes,
+  
   scrollBehavior (to, from, savedPosition) {
     console.log(from);
     if (to.hash) {
@@ -36,6 +37,7 @@ const router = new VueRouter({
       return savedPosition
     return { x: 0, y: 0 }
   }
+  
 })
 
 export default router

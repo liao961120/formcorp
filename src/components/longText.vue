@@ -4,19 +4,17 @@
       <template v-for="(res, i) in text.glosses">
         <Leipzig
           v-bind:gloss="res[1]"
-          v-bind:lastSentEndNum="lastSentEndNum.slice(-2)"
+          v-bind:lastSentEndNum="lastSentEndNum"
           :key="i"
           :id="res[1].num"
-          :class="[
-            { tohash: hash == `#${res[1].num}` },
-            currGroup(res[1].s_end, res[1].num) ? 'group0' : 'group1',
-          ]"
+          :class="[{ tohash: hash == `#${res[1].num}` }]"
         />
       </template>
     </div>
 
     <!-- Top Menu bar -->
-    <v-app-bar app color="blue-grey lighten-4" min-width="330">
+    <v-app-bar clipped-left app color="blue-grey lighten-4" min-width="330">
+      <v-app-bar-title>台大南島語料庫</v-app-bar-title>
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
       <v-row justify="center" align="center">
         <v-col> </v-col>
@@ -68,10 +66,10 @@ export default {
   data() {
     return {
       text: {},
-      src: `https://yongfu.name/glossParser/json-long-text/${this.$route.query.id}.mp3.json`,
+      src: `https://yongfu.name/glossParser/json-long-text/${this.$route.params.id}.mp3.json`,
       drawer: true,
       currGroupNum: false,
-      lastSentEndNum: [ 0 ],
+      lastSentEndNum: [],
       hash: this.$route.hash,
     };
   },
@@ -79,30 +77,18 @@ export default {
     getAudio: function () {
       this.$http.get(this.src).then(function (data) {
         this.text = data.body;
+        this.lastSentEndNum = this.text.glosses
+          .map((x) => [x[1].num, x[1].s_end])
+          .filter((x) => x[1])
+          .map((x) => x[0]);
+        this.lastSentEndNum.unshift(0);
       });
-    },
-    currGroup: function (s_end, iu_num) {
-      const lastCurrGroupNum = this.currGroupNum;
-      if (s_end === true) {
-          this.currGroupNum = !this.currGroupNum;
-          this.lastSentEndNum.push(iu_num);
-      }
-      return lastCurrGroupNum;
     },
   },
 };
 </script>
 
 <style scoped>
-/* .meta {
-  width: 100%;
-  text-align: left;
-  padding: 0.5em;
-  margin: 0.2em 0 1em 0;
-  border-radius: 8px;
-  color: rgb(255, 255, 255);
-  background: rgba(255, 65, 97, 0.561);
-} */
 .meta {
   position: fixed;
   display: block;
