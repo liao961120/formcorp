@@ -14,10 +14,9 @@
 
     <!-- Top Menu bar -->
     <v-app-bar clipped-left app color="blue-grey lighten-4" min-width="330">
-      <v-app-bar-title>台大南島語料庫</v-app-bar-title>
       <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
       <v-row justify="center" align="center">
-        <v-col> </v-col>
+        <v-col cols="2"> 台大南島語料庫 </v-col>
 
         <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
 
