@@ -1,34 +1,30 @@
 <template>
-  <div class="text-center">
     <v-dialog v-model="dialog" width="100%">
       <template v-slot:activator="{ on, attrs }">
         <v-btn
-          x-small
-          color="red lighten-2 mr-10"
+          small
+          :color="`${btnColor} lighten-1`"
           dark
           v-bind="attrs"
           v-on="on"
         >
-          故事
+          <b>{{ title }}</b>
         </v-btn>
       </template>
 
       <v-card>
         <v-card-title fixed top class="headline grey lighten-2">
-          故事
+          <b>{{ title }}</b>
         </v-card-title>
 
         <div class="d-flex flex-wrap pa-4">
-          <template v-for="(text, i) in storyMeta">
-              <v-card ripple :key="i" class="ma-2" style="width: 32%">
-                <router-link :key="i + '0'" :to="{ name: 'LongText', params: { id: `${langauge}/${text.file}`}, hash: '#'}">x
-                  </router-link>
-                <!-- <v-card-title class="headline grey lighten-2"> 故事 </v-card-title> -->
+          <template v-for="(text, i) in meta">
+              <v-card ripple v-on:click="toLongText(language, text.file)" :key="i" class="ma-2" style="width: 31%">
 
                 <v-card-text>
                   <v-list dense>
                     <v-list-item v-for="(v, k) in text" :key="k + '0' + i">
-                      <v-list-item-icon>
+                      <v-list-item-icon class="text-caption">
                         <v-icon v-text="metaMap[k].icon"></v-icon>
                         <span
                           class="pl-2"
@@ -41,34 +37,26 @@
                         >
                         <span
                           v-if="k == 'record_time'"
-                          style="font-size: 0.9em"
                           >{{ formatTime(v) }}</span
                         >
-                        <span v-else style="font-size: 0.9em">{{ v }}</span>
+                        <span v-else>{{ v }}</span>
                       </v-list-item-icon>
                     </v-list-item>
                   </v-list>
                 </v-card-text>
               </v-card>
-
           </template>
         </div>
-
-        <v-divider></v-divider>
-
-        <v-card-actions>
-          <v-spacer></v-spacer>
-          <v-btn color="primary" @click="dialog = false"> 關閉 </v-btn>
-        </v-card-actions>
       </v-card>
+
+      <v-btn fab small fixed bottom right color="primary mr-8 mb-6" @click="dialog = false"><b>關閉</b></v-btn>
     </v-dialog>
-  </div>
 </template>
 
 
 <script>
 export default {
-  props: ["storyMeta", "langauge"],
+  props: ["meta", "language", "title", "btnColor"],
   methods: {
     formatTime: function (seconds) {
       const h = Math.floor(seconds / 3600);
@@ -80,6 +68,9 @@ export default {
         `${s > 9 ? s : "0" + s} 秒`,
       ].join(" ");
     },
+    toLongText: function(lang, file) {
+      this.$router.push({ name: 'LongText', params: { id: `${lang}/${file}`}, hash: '#'})
+    }
   },
   data() {
     return {

@@ -3,12 +3,14 @@
   <v-navigation-drawer width="268" v-model="drawer" app>
     <v-list dense>
       <v-list-item two-line class="mb-2 ml-0 pl-2">
-        <v-list-item-avatar>
-          <img
-            class="logo"
-            src="https://img.yongfu.name/affiliations/GIL.png"
-          />
-        </v-list-item-avatar>
+        <a href="/">
+          <v-list-item-avatar>
+            <img
+              class="logo"
+              src="https://img.yongfu.name/affiliations/GIL.png"
+            />
+          </v-list-item-avatar>
+        </a>
 
         <v-list-item-content>
           <v-list-item-title
@@ -41,7 +43,7 @@
           <v-icon>mdi-file-document-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>語言</v-list-item-title>
+          <v-list-item-title>收錄語言</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -73,16 +75,16 @@
     </v-list>
 
     <!-- Footer -->
-    <v-footer fixed color="blue-grey lighten-5" height="37.5">
+    <v-footer fixed color="" height="37.5">
       <v-row class="mt-n4">
         <v-col cols="4">
           <v-btn
             icon
             color="light-green darken-2"
-            href="https://github.com/liao961120/gloss-search/"
+            href=""
             target="_blank"
           >
-            <v-icon>mdi-github</v-icon>
+            <v-icon></v-icon>
           </v-btn>
         </v-col>
 
@@ -90,21 +92,21 @@
           <v-btn
             icon
             color="deep-orange lighten-2"
-            href="mailto:liao961120@gmail.com"
+            href=""
             target="_blank"
           >
-            <v-icon>mdi-email-outline</v-icon>
+            <v-icon></v-icon>
           </v-btn>
         </v-col>
 
         <v-col cols="4">
-          <v-btn icon href="https://yongfu.name" target="_blank" color="pink">
-            <v-avatar size="22">
+          <v-btn icon href="" target="" color="">
+            <!-- <v-avatar size="22">
               <img
-                src="https://img.yongfu.name/icon/me-blackwhite.svg"
-                alt="Yongfu"
+                src=""
+                alt=""
               />
-            </v-avatar>
+            </v-avatar> -->
           </v-btn>
         </v-col>
       </v-row>

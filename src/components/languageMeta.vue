@@ -1,48 +1,100 @@
 <template>
   <div>
     <div class="langauges d-flex flex-wrap">
-      <div v-for="(content, lang) in data" :key="lang" class="mx-2 mb-4">
-        <v-card>
-          <v-card-title v-text="langNames[lang]"></v-card-title>
+      <template v-for="(content, lang) in data">
+        <v-card :key="lang" class="mx-2 mb-4" width="31%" min-width="210">
+          <v-card-title>
+            <b>{{ langNames[lang] }}</b>
+          </v-card-title>
+          <v-card-subtitle>
+            {{ lang.split("_")[0] }}
+          </v-card-subtitle>
 
-            <v-list dense>
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-lead-pencil</v-icon>
-                  <span class="pl-2" style="display:inline-block;min-width:5.5em;font-weight:bold">句數</span>
-                  <span style="display: inline-block">
-                    {{ content.summary.sent_num }}
-                  </span>
-                </v-list-item-icon>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-information-outline</v-icon>
-                  <span class="pl-2" style="display:inline-block;min-width:5.5em;font-weight:bold">IU數</span>
-                  <span style="display: inline-block">
-                    {{ content.summary.iu_num }}
-                  </span>
-                </v-list-item-icon>
-              </v-list-item>
-
-              <v-list-item>
-                <v-list-item-icon>
-                  <v-icon>mdi-av-timer</v-icon>
-                  <span class="pl-2" style="display:inline-block;min-width:5.5em;font-weight:bold">長度</span>
-                  <span style="display: inline-block">
-                    {{ formatTime(content.summary.record_time) }}
-                  </span>
-                </v-list-item-icon>
-              </v-list-item>
-            </v-list>
-
-          <v-card-text>
-            <StoryMeta v-bind:storyMeta="content.text" v-bind:langauge="lang"></StoryMeta>
-          </v-card-text>
           
+          <v-img
+            :src="
+              require(`@/assets/lang/${lang.split('_')[0].toLowerCase()}.jpg`)
+            "
+          >
+            <!-- `@/assets/lang/${lang.split('_')[0].toLowerCase()}.jpg` -->
+            <!-- `http://203.66.168.190/images/mainpic_${lang.split('_')[0].toLowerCase()}.jpg` -->
+            <v-hover v-slot="{ hover }">
+              <v-list
+                dense
+                class="body-2 mb-0 pb-4"
+                :color="hover ? 'white' : 'transparent'"
+              >
+              <!-- :color="hover ? 'white' : 'transparent'" -->
+                <v-list-item>
+                  <v-list-item-icon :class="hover ? '' : 'transparent--text'">
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'">mdi-lead-pencil</v-icon>
+                    <span
+                      :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
+                      style="display: inline-block; min-width: 5.5em"
+                      >句數</span
+                    >
+                    <span style="display: inline-block">
+                      {{ content.summary.sent_num }}
+                    </span>
+                  </v-list-item-icon>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon :class="hover ? '' : 'transparent--text'">
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'">mdi-information-outline</v-icon>
+                    <span
+                      :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
+                      style="display: inline-block; min-width: 5.5em"
+                      >IU數</span
+                    >
+                    <span style="display: inline-block">
+                      {{ content.summary.iu_num }}
+                    </span>
+                  </v-list-item-icon>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon :class="hover ? '' : 'transparent--text'">
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'">mdi-av-timer</v-icon>
+                    <span
+                      :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
+                      style="display: inline-block; min-width: 5.5em"
+                      >長度</span
+                    >
+                    <span style="display: inline-block">
+                      {{ formatTime(content.summary.record_time) }}
+                    </span>
+                  </v-list-item-icon>
+                </v-list-item>
+
+              </v-list>
+              </v-hover>
+          </v-img>
+          
+          <div class="my-3 text-center">
+            <TextMeta
+              :title="'故事'"
+              :btnColor="'ml-0 deep-orange'"
+              :meta="content.text"
+              :language="lang"
+            ></TextMeta>
+
+            <TextMeta
+              :title="'句子'"
+              :btnColor="'mx-4 warning'"
+              :meta="content.text"
+              :language="lang"
+            ></TextMeta>
+
+            <TextMeta
+              :title="'語法書'"
+              :btnColor="'mr-0 info'"
+              :meta="content.text"
+              :language="lang"
+            ></TextMeta>
+          </div>
         </v-card>
-      </div>
+      </template>
     </div>
 
     <!-- Top Menu bar -->
@@ -69,25 +121,25 @@
 
 <script>
 import LeftDrawer from "@/components/leftDrawer.vue";
-import StoryMeta from "@/components/storyMeta.vue";
+import TextMeta from "@/components/textMeta.vue";
 
 export default {
   components: {
     LeftDrawer,
-    StoryMeta,
+    TextMeta,
   },
   props: ["drawer"],
   methods: {
-    formatTime: function(seconds) {
+    formatTime: function (seconds) {
       const h = Math.floor(seconds / 3600);
       const m = Math.floor((seconds % 3600) / 60);
       const s = Math.round(seconds % 60);
       return [
         h == 0 ? "" : `${h} 小時`,
-        `${m > 9 ? m : (h ? '0' + m : m || '0')} 分`,
-        `${s > 9 ? s : '0' + s} 秒`
-      ].join(' ');
-    }
+        `${m > 9 ? m : h ? "0" + m : m || "0"} 分`,
+        `${s > 9 ? s : "0" + s} 秒`,
+      ].join(" ");
+    },
   },
   data() {
     return {
