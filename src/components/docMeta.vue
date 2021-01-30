@@ -2,8 +2,8 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="600">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn small color="red lighten-2" dark v-bind="attrs" v-on="on">
-          語料檔資訊
+        <v-btn fab fixed bottom right x-small color="red lighten-2 mr-10" dark v-bind="attrs" v-on="on">
+          資訊
         </v-btn>
       </template>
 
@@ -57,5 +57,8 @@ export default {
 <style scoped>
 .info-container {
     margin-top: 1em;
+}
+button {
+  z-index: 9999;
 }
 </style>

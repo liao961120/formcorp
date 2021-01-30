@@ -142,7 +142,7 @@ div.full-sent-audio {
   border-radius: 6px;
   margin: 0.5em auto;
   padding: 0.55em;
-  background: rgb(161, 0, 161);
+  background: #ff5622ed;
 }
 div.full-sent-audio span {
   font-size: 0.73em;

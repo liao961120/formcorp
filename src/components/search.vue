@@ -8,12 +8,9 @@
         <v-btn v-if="infscroll > 60" @click="infscroll += 15;" :disabled="vue_seach_results.length <= infscroll" x-small>Show More</v-btn>
 
         <!-- Top Menu bar -->
-        <v-app-bar clipped-left app color="blue-grey lighten-4" min-width="330">
-            <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
+        <v-app-bar app color="orange accent-1" min-width="330">
+            <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-row justify="center" align="center">
-                <v-col cols="2">
-                    台大南島語料庫
-                </v-col>
                 
                 <v-col>
                     <v-text-field
@@ -29,7 +26,7 @@
 
                 <!-- <v-spacer class="d-none d-md-flex mr-5"></v-spacer> -->
 
-                <v-col cols="2" class="d-none d-sm-flex">
+                <v-col cols="2" class="d-none d-md-flex">
                     <v-select
                         :items="docfilterSelect"
                         v-model="docfilter"
@@ -124,10 +121,10 @@ export default {
         Leipzig,
         LeftDrawer
     },
+    props: ["drawer"],
     data() {
         return {
             search_results_key: 0,
-            drawer: true,
             database: "https://yongfu.name/glossParser/all_lang-long-text.json",
             results: [],
             querytypes: [

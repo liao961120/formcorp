@@ -12,36 +12,25 @@
       </template>
     </div>
 
+    <DocMeta v-bind:meta="text.meta"></DocMeta>
     <!-- Top Menu bar -->
-    <v-app-bar clipped-left app color="blue-grey lighten-4" min-width="330">
-      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
-      <v-row justify="center" align="center">
-        <v-col cols="2"> 台大南島語料庫 </v-col>
+    <v-app-bar flat color="transparent" app min-width="330">
+      <!-- <v-app-bar-nav-icon color="orange red--text accent-1" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
+      <v-btn @click.stop="drawer = !drawer" icon depressed style="background:#FFD180">
+        <v-icon>mdi-menu</v-icon>
+      </v-btn>
 
+      <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
 
         <v-col class="d-none d-sm-flex"> </v-col>
 
         <!-- <v-col class="d-none d-sm-flex mr-3" sm="2" lg="1"> </v-col> -->
 
-        <v-col class="ml-0 mr-7 pr-5" cols="1">
-          <DocMeta v-bind:meta="text.meta"></DocMeta>
-        </v-col>
+        <!-- <v-col class="ml-0 mr-7 pr-5" cols="1"> -->
+        <!-- </v-col> -->
       </v-row>
     </v-app-bar>
-
-    <!-- Bottom Menu bar for mobile -->
-    <v-bottom-navigation
-      app
-      grow
-      height="54"
-      color="blue-grey lighten-4"
-      class="d-flex d-sm-none"
-    >
-      <span class="ml-0 mr-8" style="width: 32%"> </span>
-      <span class="mr-0" style="width: 32%"> </span>
-      <span></span>
-    </v-bottom-navigation>
 
     <!-- Left drawer -->
     <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
@@ -62,11 +51,11 @@ export default {
   created: function () {
     this.getAudio();
   },
+  props: ["drawer"],
   data() {
     return {
       text: {},
       src: `https://yongfu.name/glossParser/json-long-text/${this.$route.params.id}.mp3.json`,
-      drawer: true,
       currGroupNum: false,
       lastSentEndNum: [],
       hash: this.$route.hash,

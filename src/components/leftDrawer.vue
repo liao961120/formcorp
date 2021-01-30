@@ -1,30 +1,56 @@
 <template>
   <!-- Left drawer -->
-  <v-navigation-drawer width="268" clipped permanent expand-on-hover app>
+  <v-navigation-drawer width="268" v-model="drawer" app>
     <v-list dense>
       <v-list-item two-line class="mb-2 ml-0 pl-2">
         <v-list-item-avatar>
-          <img class="logo" src="https://img.yongfu.name/affiliations/GIL.png" />
+          <img
+            class="logo"
+            src="https://img.yongfu.name/affiliations/GIL.png"
+          />
         </v-list-item-avatar>
 
         <v-list-item-content>
-          <v-list-item-title>Gloss Search</v-list-item-title>
+          <v-list-item-title
+            >NTU Corpus of<br />
+            Formosan Languages</v-list-item-title
+          >
           <v-list-item-subtitle class="text-overline"
-            >南島語料搜尋</v-list-item-subtitle
+            >台大台灣南島語料庫</v-list-item-subtitle
           >
         </v-list-item-content>
       </v-list-item>
       <v-divider></v-divider>
 
-      <v-list-item link router to="/">
+      <v-list-item link router to="/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-magnify</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>Search</v-list-item-title>
+          <v-list-item-title>語料搜尋</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-      <v-list-item link router to="long-text/Kanakanavu_Kanakanavu%2FkkvNr_dailylife_Angai#5">
+
+      <v-list-item
+        link
+        router
+        to="/language"
+        active-class="deep-orange--text"
+      >
+        <v-list-item-action>
+          <v-icon>mdi-file-document-outline</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>語言</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item
+        link
+        router
+        to="/long-text/Kanakanavu_Kanakanavu%2FkkvNr_dailylife_Angai#5"
+        active-class="deep-orange--text"
+      >
         <v-list-item-action>
           <v-icon>mdi-translate</v-icon>
         </v-list-item-action>
@@ -89,5 +115,13 @@
 <script>
 export default {
   props: ["drawer"],
-}
+  data() {
+    return {
+      // drawer2: this.drawer,
+    };
+  },
+};
 </script>
+
+<style scoped>
+</style>
