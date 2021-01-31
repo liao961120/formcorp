@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div class="langauges d-flex flex-wrap">
+    <div class="langauges d-flex flex-wrap justify-space-around pa-2">
       <template v-for="(content, lang) in data">
-        <v-card :key="lang" class="mx-2 mb-4" width="31%" min-width="210">
+        <v-card :key="lang" class="mb-4" width="32%" min-width="210">
           <v-card-title>
             <b>{{ langNames[lang] }}</b>
           </v-card-title>

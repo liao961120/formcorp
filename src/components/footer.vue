@@ -4,6 +4,7 @@
       :padless="padless"
       absolute
       height="15"
+      class="d-none d-md-block d-lg-block d-xl-block"
     >
       <v-card
         flat
