@@ -72,26 +72,26 @@
           </v-img>
           
           <div class="my-3 text-center">
-            <TextMeta
+            <TextInfo
               :title="'故事'"
               :btnColor="'ml-0 deep-orange'"
               :meta="content.text"
               :language="lang"
-            ></TextMeta>
+            ></TextInfo>
 
-            <TextMeta
+            <TextInfo
               :title="'句子'"
               :btnColor="'mx-4 info'"
               :meta="content.text"
               :language="lang"
-            ></TextMeta>
+            ></TextInfo>
 
-            <TextMeta
+            <TextInfo
               :title="'語法書'"
               :btnColor="'mr-0 warning'"
               :meta="content.text"
               :language="lang"
-            ></TextMeta>
+            ></TextInfo>
           </div>
         </v-card>
       </template>
@@ -116,17 +116,20 @@
 
     <!-- Left drawer -->
     <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
+    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import LeftDrawer from "@/components/leftDrawer.vue";
-import TextMeta from "@/components/textMeta.vue";
+import TextInfo from "@/components/textInfo.vue";
+import Footer from "@/components/footer.vue";
 
 export default {
   components: {
     LeftDrawer,
-    TextMeta,
+    TextInfo,
+    Footer,
   },
   props: ["drawer"],
   methods: {

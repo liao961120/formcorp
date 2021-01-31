@@ -106,20 +106,23 @@
 
         <!-- Left drawer -->
         <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
+        <Footer></Footer>
         
     </div>
 </template>
 
 <script>
 import Leipzig from "@/components/Leipzig.vue";
-import LeftDrawer from "@/components/leftDrawer.vue"
+import LeftDrawer from "@/components/leftDrawer.vue";
+import Footer from "@/components/footer.vue";
 // @ is an alias to /src
 
 export default {
     name: "gloss-search",
     components: {
         Leipzig,
-        LeftDrawer
+        LeftDrawer,
+        Footer
     },
     props: ["drawer"],
     data() {

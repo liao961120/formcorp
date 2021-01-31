@@ -22,7 +22,7 @@ Vue.use(VueRouter)
   {
     path: '/language/',
     name: 'Language',
-    component: () => import('../components/languageMeta.vue')
+    component: () => import('../components/language.vue')
   }
 ]
 
