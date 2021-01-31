@@ -81,14 +81,14 @@
 
             <TextMeta
               :title="'句子'"
-              :btnColor="'mx-4 warning'"
+              :btnColor="'mx-4 info'"
               :meta="content.text"
               :language="lang"
             ></TextMeta>
 
             <TextMeta
               :title="'語法書'"
-              :btnColor="'mr-0 info'"
+              :btnColor="'mr-0 warning'"
               :meta="content.text"
               :language="lang"
             ></TextMeta>

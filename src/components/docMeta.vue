@@ -2,7 +2,7 @@
   <div class="text-center">
     <v-dialog v-model="dialog" width="600">
       <template v-slot:activator="{ on, attrs }">
-        <v-btn fab fixed bottom right x-small color="red lighten-2 mr-10" dark v-bind="attrs" v-on="on">
+        <v-btn x-small color="info lighten-1 ml-2 mb-1 font-weight-bold" v-bind="attrs" v-on="on">
           資訊
         </v-btn>
       </template>

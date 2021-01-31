@@ -47,20 +47,6 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item
-        link
-        router
-        to="/long-text/Kanakanavu_Kanakanavu%2FkkvNr_dailylife_Angai#5"
-        active-class="deep-orange--text"
-      >
-        <v-list-item-action>
-          <v-icon>mdi-translate</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>Long Text</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
       <v-divider></v-divider>
       <v-subheader class="pb-0 mb-0">External Links</v-subheader>
 

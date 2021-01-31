@@ -56,7 +56,7 @@
                         :false-value="0"
                         :label="(query.regex == '1' ? '表達式' : '標準')"
                         inset dense
-                        class="mt-4" color="success"
+                        class="mt-4" color="info"
                     ></v-switch>
                 </v-col>
 

@@ -12,7 +12,6 @@
       </template>
     </div>
 
-    <DocMeta v-bind:meta="text.meta"></DocMeta>
     <!-- Top Menu bar -->
     <v-app-bar flat color="transparent" app min-width="330">
       <!-- <v-app-bar-nav-icon color="orange red--text accent-1" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
@@ -21,9 +20,12 @@
       </v-btn>
 
       <v-row justify="center" align="center">
-        <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
-
-        <v-col class="d-none d-sm-flex"> </v-col>
+        <v-spacer class="d-none d-md-flex"></v-spacer>
+        <v-col class="d-none d-sm-flex grey--text text-darken-3 text-h6">
+          {{ text.meta.video.replace('.mp3', '') }}
+          <DocMeta v-bind:meta="text.meta"></DocMeta>
+        </v-col>
+        <v-spacer class="d-none d-md-flex"></v-spacer>
 
         <!-- <v-col class="d-none d-sm-flex mr-3" sm="2" lg="1"> </v-col> -->
 
@@ -78,12 +80,12 @@ export default {
 
 <style scoped>
 .meta {
-  position: fixed;
+  /* position: fixed;
   display: block;
   width: 10%;
   margin-right: 0;
   right: 0;
-  top: 2%;
+  top: 2%; */
   z-index: 100;
 }
 .text {
