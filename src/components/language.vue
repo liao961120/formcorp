@@ -151,9 +151,9 @@ export default {
       langNames: {
         Rukai_Vedai: "魯凱 (霧台)",
         Amis_Ciwkangan: "阿美 (長光)",
-        "Saisiyat_Tong-he": "撒奇萊雅 (東河)",
+        "Saisiyat_Tong-he": "賽夏 (東河)",
         Sakizaya_Sakizaya: "撒奇萊雅",
-        Kavalan_Xinshe: "葛瑪蘭 (新社)",
+        Kavalan_Xinshe: "噶瑪蘭 (新社)",
         Atayal_Mayrinax: "泰雅 (汶水)",
         Seediq_Tgdaya: "賽德克 (Tgdaya)",
         Tsou_TapangU: "鄒語 (TapangU)",

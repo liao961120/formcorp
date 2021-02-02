@@ -169,7 +169,7 @@ export default {
         { text: "全部", value: "" },
         { text: "魯凱 (霧台)", value: "Rukai_Vedai" },
         { text: "阿美 (長光)", value: "Amis_Ciwkangan" },
-        { text: "撒奇萊雅 (東河)", value: "Saisiyat_Tong-he" },
+        { text: "賽夏 (東河)", value: "Saisiyat_Tong-he" },
         { text: "撒奇萊雅", value: "Sakizaya_Sakizaya" },
         { text: "葛瑪蘭 (新社)", value: "Kavalan_Xinshe" },
         { text: "泰雅 (汶水)", value: "Atayal_Mayrinax" },
@@ -179,7 +179,7 @@ export default {
         { text: "卡那卡那富", value: "Kanakanavu_Kanakanavu" },
       ],
       infscroll: 15,
-      ignoreCharSet: ",_/^’\\-='<>.".split(""),
+      ignoreCharSet: ",_/^’\\-='<>.:".split(""),
     };
   },
   computed: {
@@ -230,8 +230,8 @@ export default {
           var matchNum = 0;
           for (let j = 0; j < search_pats.length; j++) {
             // Exact search
-            var norm_pat = this.normToken(search_pats[j]);
             if (this.query.regex == 0) {
+              var norm_pat = this.normToken(search_pats[j]);
               let isMatch = gloss_content.some(
                 //tk => tk == search_pats[j]
                 (tk) =>
@@ -317,7 +317,7 @@ export default {
   /* margin-top: 175px; */
   width: 100%;
   text-align: left;
-  font-size: 1.18em;
+  font-size: 1.1em;
 }
 
 .results > div {

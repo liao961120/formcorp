@@ -21,7 +21,7 @@
 
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex"></v-spacer>
-        <v-col class="d-none d-sm-flex grey--text text-darken-3 text-h6">
+        <v-col cols="6" class="d-none d-sm-flex grey--text text-darken-3 text-h6">
           {{ text.meta.video.replace('.mp3', '') }}
           <DocMeta v-bind:meta="text.meta"></DocMeta>
         </v-col>

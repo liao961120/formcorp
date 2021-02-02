@@ -57,7 +57,7 @@
       fixed
       top
       right
-      color="primary mr-7 mt-6"
+      color="primary mr-7 mt-9"
       @click="dialog = false"
       ><b>關閉</b></v-btn
     >

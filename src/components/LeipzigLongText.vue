@@ -40,10 +40,10 @@
               <span>{{ tup[0] }}</span>
             </p>
             <p class="gloss__line gloss__line--2">
-              <span>{{ tup[0] }}</span>
+              <span>{{ tup[1] }}</span>
             </p>
             <p class="gloss__line gloss__line--3">
-              <span>{{ tup[0] }}</span>
+              <span>{{ tup[2] }}</span>
             </p>
           </div>
         </div>
