@@ -4,7 +4,8 @@
       <v-btn
         small
         :color="`${btnColor} lighten-1`"
-        dark
+        :dark="meta.length > 0"
+        :disabled="meta.length == 0"
         v-bind="attrs"
         v-on="on"
       >

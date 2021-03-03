@@ -10,7 +10,6 @@
             {{ lang.split("_")[0] }}
           </v-card-subtitle>
 
-          
           <v-img
             :src="
               require(`@/assets/lang/${lang.split('_')[0].toLowerCase()}.jpg`)
@@ -24,74 +23,89 @@
                 class="body-2 mb-0 pb-4"
                 :color="hover ? 'white' : 'transparent'"
               >
-              <!-- :color="hover ? 'white' : 'transparent'" -->
+                <!-- :color="hover ? 'white' : 'transparent'" -->
                 <v-list-item>
                   <v-list-item-icon :class="hover ? '' : 'transparent--text'">
-                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'">mdi-lead-pencil</v-icon>
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
+                      >mdi-lead-pencil</v-icon
+                    >
                     <span
                       :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
                       style="display: inline-block; min-width: 5.5em"
                       >句數</span
                     >
                     <span style="display: inline-block">
-                      {{ content.summary.sent_num }}
+                      {{
+                        content.summary.story.sent_num +
+                        content.summary.sentence.sent_num
+                      }}
                     </span>
                   </v-list-item-icon>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-icon :class="hover ? '' : 'transparent--text'">
-                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'">mdi-information-outline</v-icon>
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
+                      >mdi-information-outline</v-icon
+                    >
                     <span
                       :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
                       style="display: inline-block; min-width: 5.5em"
                       >IU數</span
                     >
                     <span style="display: inline-block">
-                      {{ content.summary.iu_num }}
+                      {{ content.summary.story.iu_num }}
                     </span>
                   </v-list-item-icon>
                 </v-list-item>
 
                 <v-list-item>
                   <v-list-item-icon :class="hover ? '' : 'transparent--text'">
-                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'">mdi-av-timer</v-icon>
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
+                      >mdi-av-timer</v-icon
+                    >
                     <span
                       :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
                       style="display: inline-block; min-width: 5.5em"
                       >長度</span
                     >
                     <span style="display: inline-block">
-                      {{ formatTime(content.summary.record_time) }}
+                      {{ formatTime(content.summary.story.record_time) }}
                     </span>
                   </v-list-item-icon>
                 </v-list-item>
-
               </v-list>
-              </v-hover>
+            </v-hover>
           </v-img>
-          
+
           <div class="my-3 text-center">
             <TextInfo
               :title="'故事'"
-              :btnColor="'ml-0 deep-orange'"
-              :meta="content.text"
+              :btnColor="'deep-orange'"
+              :meta="content.text.filter((elem) => elem.type != 'Sentence')"
               :language="lang"
             ></TextInfo>
+
+            <span class="mx-2"></span>
 
             <TextInfo
               :title="'句子'"
-              :btnColor="'mx-4 info'"
-              :meta="content.text"
+              :btnColor="'info'"
+              :meta="content.text.filter((elem) => elem.type == 'Sentence')"
               :language="lang"
             ></TextInfo>
 
-            <TextInfo
-              :title="'語法書'"
-              :btnColor="'mr-0 warning'"
-              :meta="content.text"
-              :language="lang"
-            ></TextInfo>
+            <span class="mx-2"></span>
+
+            <v-btn
+              small
+              color="warning lighten-1`"
+              dark
+              v-bind="attrs"
+              v-on="on"
+            >
+              <b>語法書</b>
+            </v-btn>
           </div>
         </v-card>
       </template>
@@ -147,7 +161,7 @@ export default {
   data() {
     return {
       data: {},
-      database: "https://yongfu.name/glossParser/long-text-meta.json",
+      database: "https://yongfu.name/glossParser/text-meta.json",
       langNames: {
         Rukai_Vedai: "魯凱 (霧台)",
         Amis_Ciwkangan: "阿美 (長光)",
@@ -158,7 +172,7 @@ export default {
         Seediq_Tgdaya: "賽德克 (Tgdaya)",
         Tsou_TapangU: "鄒語 (TapangU)",
         Tsou_Tfya: "鄒語 (Tfya)",
-        Bunun_Isbukun: '布農 (Isbukun)',
+        Bunun_Isbukun: "布農 (Isbukun)",
         Kanakanavu_Kanakanavu: "卡那卡那富",
       },
     };
