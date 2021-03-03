@@ -39,10 +39,20 @@
                   <template v-else>?</template>
                 </td>
                 <td v-else :key="k + '0' + i">
-                  <router-link v-if="k == 'file'" :to="{name: 'LongText', params: { id: `${language}/${text.file}` }, hash: '#'}"
-                  class="router-link">
-                    {{ v }}
-                  </router-link>
+                  <template v-if="k == 'file'">
+                    <router-link v-if="texttype == 'Story'" :to="{name: 'LongText', 
+                    params: { id: `${language}/${text.file}`}, 
+                    hash: '#'}"
+                    class="router-link">
+                      {{ v }}
+                    </router-link>
+                    <router-link v-else :to="{name: 'LongText', 
+                    params: { id: text.file, type: texttype }, 
+                    hash: '#'}"
+                    class="router-link">
+                      {{ v }}
+                    </router-link>
+                  </template>
                   <template v-else>{{ v }}</template>
                 </td>
               </template>
@@ -68,7 +78,7 @@
 
 <script>
 export default {
-  props: ["meta", "language", "title", "btnColor"],
+  props: ["meta", "language", "title", "btnColor", "texttype"],
   methods: {
     formatTime: function (seconds) {
       const h = Math.floor(seconds / 3600);

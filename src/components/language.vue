@@ -81,6 +81,7 @@
           <div class="my-3 text-center">
             <TextInfo
               :title="'句子'"
+              :texttype="'Sentence'"
               :btnColor="'deep-orange'"
               :meta="content.text.filter((elem) => elem.type == 'Sentence')"
               :language="lang"
@@ -90,6 +91,7 @@
 
             <TextInfo
               :title="'故事'"
+              :texttype="'Story'"
               :btnColor="'info'"
               :meta="content.text.filter((elem) => elem.type != 'Sentence')"
               :language="lang"
