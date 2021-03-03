@@ -26,7 +26,7 @@
           <router-link
             :to="{
               name: 'LongText',
-              params: { id: gloss.file },
+              params: { id: gloss.file, type: gloss.meta.type },
               hash: '#' + gloss.num,
             }"
           >
