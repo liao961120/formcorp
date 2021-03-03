@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div v-if="gloss.s_end" class="full-sent-audio">
+    <div v-if="gloss.s_end & 'video' in gloss.meta" class="full-sent-audio">
       <button
         class="sent-audio"
         title="例句發音"
