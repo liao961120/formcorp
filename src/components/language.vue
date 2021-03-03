@@ -158,6 +158,7 @@ export default {
         Seediq_Tgdaya: "賽德克 (Tgdaya)",
         Tsou_TapangU: "鄒語 (TapangU)",
         Tsou_Tfya: "鄒語 (Tfya)",
+        Bunun_Isbukun: '布農 (Isbukun)',
         Kanakanavu_Kanakanavu: "卡那卡那富",
       },
     };
