@@ -147,7 +147,7 @@ export default {
   data() {
     return {
       search_results_key: 0,
-      database: "https://yongfu.name/glossParser/all_lang-long-text.json",
+      database: "https://yongfu.name/glossParser/all_lang.json",
       results: [],
       querytypes: [
         {
@@ -176,6 +176,7 @@ export default {
         { text: "賽德克 (Tgdaya)", value: "Seediq_Tgdaya" },
         { text: "鄒語 (TapangU)", value: "Tsou_TapangU" },
         { text: "鄒語 (Tfya)", value: "Tsou_Tfya" },
+        { text: "布農 (Isbukun)", value: "Bunun_Isbukun" },
         { text: "卡那卡那富", value: "Kanakanavu_Kanakanavu" },
       ],
       infscroll: 15,
