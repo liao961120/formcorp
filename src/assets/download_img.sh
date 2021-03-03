@@ -1,4 +1,4 @@
-langs=('saisiyat' 'kavalan' 'tsou' 'amis' 'sakizaya' 'seediq' 'bunun' 'atayal' 'rukai' 'kanakanavu' 'puyuma')
+langs=('saisiyat' 'kavalan' 'tsou' 'amis' 'sakizaya' 'seediq' 'bunun' 'atayal' 'rukai' 'kanakanavu' 'puyuma' 'bunun')
  
 for lang in "${langs[@]}"
 do

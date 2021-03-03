@@ -80,18 +80,18 @@
 
           <div class="my-3 text-center">
             <TextInfo
-              :title="'故事'"
+              :title="'句子'"
               :btnColor="'deep-orange'"
-              :meta="content.text.filter((elem) => elem.type != 'Sentence')"
+              :meta="content.text.filter((elem) => elem.type == 'Sentence')"
               :language="lang"
             ></TextInfo>
-
+            
             <span class="mx-2"></span>
 
             <TextInfo
-              :title="'句子'"
+              :title="'故事'"
               :btnColor="'info'"
-              :meta="content.text.filter((elem) => elem.type == 'Sentence')"
+              :meta="content.text.filter((elem) => elem.type != 'Sentence')"
               :language="lang"
             ></TextInfo>
 
