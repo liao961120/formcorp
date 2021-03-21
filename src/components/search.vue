@@ -164,7 +164,7 @@ export default {
         regex: 0,
         type: "gloss",
       },
-      docfilter: "",
+      docfilter: "Rukai_Vedai",
       docfilterSelect: [
         { text: "全部", value: "" },
         { text: "魯凱 (霧台)", value: "Rukai_Vedai" },
