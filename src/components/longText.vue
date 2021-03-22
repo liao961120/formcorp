@@ -22,11 +22,8 @@
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex"></v-spacer>
         <v-col cols="6" class="d-none d-sm-flex grey--text text-darken-3 text-h6">
-          <template v-if="type == 'Sentence'">
-            {{ text.meta.language.split(', ')[0] + ` (${this.$route.params.id}.txt)` }}
-          </template>
-          <template v-else>
-            {{ text.meta.video.replace('.mp3', '') }}
+          <template>
+            {{ text.meta.language.split(', ')[0] }}
           </template>
           <DocMeta v-bind:meta="text.meta"></DocMeta>
         </v-col>
@@ -62,20 +59,11 @@ export default {
   data() {
     return {
       text: {},
-      src_longtext: `https://yongfu.name/glossParser/json-long-text/${this.$route.params.id}.mp3.json`,
-      src_sentence: `https://yongfu.name/glossParser/json-sentence/${this.$route.params.id}.json`,
-      type: `${this.$route.params.type}`,
+      src: `https://yongfu.name/glossParser/${this.$route.params.id}.json`,
       currGroupNum: false,
       lastSentEndNum: [],
       hash: this.$route.hash,
     };
-  },
-  computed: {
-    src: function() {
-      if (this.type == 'Sentence') 
-        return this.src_sentence
-      return this.src_longtext
-    }
   },
   methods: {
     getAudio: function () {

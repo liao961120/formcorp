@@ -80,7 +80,7 @@
 
           <div class="my-3 text-center">
             <TextInfo
-              :title="'句子'"
+              :title="`句子`"
               :texttype="'Sentence'"
               :btnColor="'deep-orange'"
               :meta="content.text.filter((elem) => elem.type == 'Sentence')"

@@ -22,10 +22,13 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <th class="text-left" v-for="(v, k) in meta[0]" :key="k">
-                <v-icon v-text="metaMap[k].icon"></v-icon>
-                {{ metaMap[k].name }}
-              </th>
+              <template v-for="(v, k) in meta[0]">
+                <th class="text-left" :key="k">
+                  <v-icon v-text="metaMap[k].icon"></v-icon>
+                  {{ metaMap[k].name }}
+                  
+                </th>
+              </template>
             </tr>
           </thead>
           <tbody>
@@ -41,13 +44,13 @@
                 <td v-else :key="k + '0' + i">
                   <template v-if="k == 'file'">
                     <router-link v-if="texttype == 'Story'" :to="{name: 'LongText', 
-                    params: { id: `${language}/${text.file}`}, 
+                    params: { id: `story/${text.file}` }, 
                     hash: '#'}"
                     class="router-link">
                       {{ v }}
                     </router-link>
                     <router-link v-else :to="{name: 'LongText', 
-                    params: { id: text.file, type: texttype }, 
+                    params: { id: `sentence/${text.file}` }, 
                     hash: '#'}"
                     class="router-link">
                       {{ v }}
@@ -122,6 +125,7 @@ export default {
         iu_num: { name: "IU數", icon: "mdi-information-outline" },
         sent_num: { name: "句數", icon: "mdi-lead-pencil" },
         record_time: { name: "長度", icon: "mdi-av-timer" },
+        transcribed: {name: "轉寫者", icon: "mdi-file"}
       },
     };
   },
