@@ -42,7 +42,7 @@ export default {
   },
   computed: {
     src() {
-      return `http://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
+      return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
     },
   },
   created: function () {
