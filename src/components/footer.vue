@@ -27,8 +27,25 @@
 
         <v-divider></v-divider>
 
+        <v-row class="white--text">
+          <v-col cols="6">
+          <v-card-text class="text-left ml-5">
+            106 臺北市大安區羅斯福路四段1號 樂學館 <br>
+            電子郵件：limay@ntu.edu.tw <br>
+            電話：(02) 33664104#308<br>
+            傳真：(02) 23635358
+          </v-card-text>
+
+          </v-col>
+
+          <v-col cols="6">
+            <v-img src="@/assets/ntulogo-black2.png" max-width="75%" class="mt-4 mr-8 ml-auto"></v-img>
+          </v-col>
+            
+        </v-row>
+
         <v-card-text class="white--text">
-          Copyright © {{ new Date().getFullYear() }} <strong>臺灣大學語言學研究所</strong>
+          Copyright © 2020-{{ new Date().getFullYear() }} <strong>臺灣大學語言學研究所</strong>
         </v-card-text>
       </v-card>
     </v-footer>

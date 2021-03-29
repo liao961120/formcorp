@@ -51,7 +51,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link active-class="deep-orange--text">
+      <v-list-item  link router to="/about" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-information-outline</v-icon>
         </v-list-item-action>
