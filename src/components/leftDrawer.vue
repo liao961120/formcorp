@@ -49,8 +49,17 @@
         </v-list-item-content>
       </v-list-item>
 
+      <v-list-item link router to="#" active-class="deep-orange--text">
+        <v-list-item-action>
+          <v-icon>mdi-link-variant</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>相關資源</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
       <v-divider></v-divider>
-      <v-subheader class="pb-0 mb-0 text-caption">外部連結</v-subheader>
+      <!-- <v-subheader class="pb-0 mb-0 text-caption">外部連結</v-subheader> -->
 
       <!-- <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank">
         <v-list-item-action>
