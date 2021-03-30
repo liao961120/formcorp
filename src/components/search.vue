@@ -73,7 +73,7 @@
           ></v-switch>
         </v-col>
 
-        <v-col class="mr-7 pr-5" cols="1">
+        <v-col class="mx-1 px-0" cols="2">
           <v-btn small fab>
             <v-badge
               offset-x="8"
@@ -86,10 +86,15 @@
             </v-badge>
             <v-icon v-else>mdi-magnify</v-icon>
           </v-btn>
+
+          <v-btn class="ml-4 mr-0 px-0" small fab dark outlined @click="copyShareURL" title="Copy share URL">
+            <v-icon>mdi-share-variant</v-icon>
+          </v-btn>
         </v-col>
       </v-row>
     </v-app-bar>
 
+    <input v-model="shareURL" ref="text" type="hidden">
     <!-- Bottom Menu bar for mobile -->
     <v-bottom-navigation
       app
@@ -126,14 +131,12 @@
 
     <!-- Left drawer -->
     <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
 import Leipzig from "@/components/Leipzig.vue";
 import LeftDrawer from "@/components/leftDrawer.vue";
-import Footer from "@/components/footer.vue";
 // @ is an alias to /src
 
 export default {
@@ -141,7 +144,6 @@ export default {
   components: {
     Leipzig,
     LeftDrawer,
-    Footer,
   },
   props: ["drawer"],
   data() {
@@ -160,11 +162,11 @@ export default {
         },
       ],
       query: {
-        query: "",
-        regex: 0,
-        type: "gloss",
+        query: (this.$route.query.query) ? this.$route.query.query : "",
+        regex: (this.$route.query.regex) ? this.$route.query.regex : 0,
+        type: (this.$route.query.type) ? this.$route.query.type : "gloss",
       },
-      docfilter: "Amis_Ciwkangan",
+      docfilter: (this.$route.query.filter) ? this.$route.query.filter : "Amis_Ciwkangan",
       docfilterSelect: [
         { text: "阿美 (長光)", value: "Amis_Ciwkangan" },
         { text: "葛瑪蘭 (新社)", value: "Kavalan_Xinshe" },
@@ -272,6 +274,17 @@ export default {
     vue_seach_results_lazy: function () {
       return this.vue_seach_results.slice(0, this.infscroll);
     },
+    shareURL: function() {
+      var baseURL = window.location.href.replace(/#\/.*$/, '');
+      var p = {
+        q: this.query.query,
+        r: this.query.regex,
+        t: this.query.type,
+        f: this.docfilter
+      }
+      document.execCommand("copy");
+      return `${baseURL}#/?query=${p.q}&regex=${p.r}&type=${p.t}&filter=${p.f}`;
+    }
   },
   created: function () {
     this.$http.get(this.database).then(function (data) {
@@ -308,6 +321,14 @@ export default {
     forceReload: function () {
       this.search_results_key += 1;
     },
+    copyShareURL: function() {
+      this.$refs.text.type = 'text';
+      this.$refs.text.select();
+      document.execCommand('copy');
+      this.$refs.text.type = 'hidden';
+      // console.log(this.$refs.text.value);
+      alert("已複製分享網址至剪貼簿\n使用此網址分享你的搜尋結果\nCopied share URL!\nUse this URL to share your current search results");
+    }
   },
 };
 </script>
