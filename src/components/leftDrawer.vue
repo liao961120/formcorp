@@ -40,7 +40,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link router to="/language" active-class="deep-orange--text">
+      <v-list-item link router to="/language/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-microphone-outline</v-icon>
         </v-list-item-action>
