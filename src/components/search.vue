@@ -74,7 +74,7 @@
         </v-col>
 
         <v-col class="mx-1 px-0" cols="2">
-          <v-btn small fab>
+          <v-btn small fab style="z-index: 5">
             <v-badge
               offset-x="8"
               offset-y="8"
@@ -87,7 +87,7 @@
             <v-icon v-else>mdi-magnify</v-icon>
           </v-btn>
 
-          <v-btn class="ml-4 mr-0 px-0" small fab dark outlined @click="copyShareURL" title="Copy share URL">
+          <v-btn class="ml-4 mr-0 px-0" small fab dark color="cyan lighten-1" outlined @click="copyShareURL" title="Copy share URL">
             <v-icon>mdi-share-variant</v-icon>
           </v-btn>
         </v-col>
@@ -326,7 +326,6 @@ export default {
       this.$refs.text.select();
       document.execCommand('copy');
       this.$refs.text.type = 'hidden';
-      // console.log(this.$refs.text.value);
       alert("已複製分享網址至剪貼簿\n使用此網址分享你的搜尋結果\nCopied share URL!\nUse this URL to share your current search results");
     }
   },
