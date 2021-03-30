@@ -57,7 +57,9 @@ export default {
 <style lang="scss">
 // The html is generated with Pandoc
 .md-content {
-  width: 90%;
+  font-size: 1.05em;
+  width: 80%;
+  text-align: justify;
   margin: 0.8em auto 2em auto;
   padding: 0 auto;
 
@@ -76,6 +78,7 @@ export default {
   .float-right {
     max-width: 25%;
     float: right;
+    margin-left: 0.85em;
   }
   .references::before {
     content: "相關文獻";
@@ -85,8 +88,8 @@ export default {
     margin: 0.5em 0 0.3em 0;
   }
   .references > .csl-entry {
-    padding-left: 1.5em;
-    text-indent: -1.5em;
+    padding-left: 2.5em;
+    text-indent: -2.5em;
     margin-bottom: 0.3em;
   }
   .citation > a {
@@ -94,6 +97,9 @@ export default {
   }
   .citation > a:hover {
     text-decoration: underline;
+  }
+  section {
+    margin-top: 1.8em;
   }
 }
 </style>
