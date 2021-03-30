@@ -31,6 +31,7 @@
           <v-col cols="6">
           <v-card-text class="text-left ml-5">
             106 臺北市大安區羅斯福路四段1號 樂學館 <br>
+            計畫負責人：宋麗梅 <br>
             電子郵件：limay@ntu.edu.tw <br>
             電話：(02) 33664104#308<br>
             傳真：(02) 23635358
