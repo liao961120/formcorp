@@ -8,7 +8,12 @@ Vue.use(VueRouter)
   const routes = [
   {
     path: '/',
-    name: 'Home',
+    name: 'About',
+    component: () => import('../components/md-content.vue')
+  },
+  {
+    path: '/search/',
+    name: 'Search',
     component: Search
   },
   {

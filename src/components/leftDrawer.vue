@@ -24,7 +24,16 @@
       </v-list-item>
       <v-divider></v-divider>
 
-      <v-list-item link router to="/" active-class="deep-orange--text">
+      <v-list-item  link router to="/" active-class="deep-orange--text">
+        <v-list-item-action>
+          <v-icon>mdi-information-outline</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>關於我們</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item link router to="/search/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-magnify</v-icon>
         </v-list-item-action>
@@ -39,24 +48,6 @@
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>收錄語言</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item link active-class="deep-orange--text">
-        <v-list-item-action>
-          <v-icon>mdi-clipboard-list-outline</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>最新消息</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-list-item  link router to="/about" active-class="deep-orange--text">
-        <v-list-item-action>
-          <v-icon>mdi-information-outline</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>關於我們</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
