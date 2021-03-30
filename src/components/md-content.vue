@@ -55,12 +55,13 @@ export default {
     display: block;
     font-size: 1.5em;
     font-weight: bold;
-    margin: 0.5em 0 0.3em 0;
+    margin: 1.8em 0 0.3em 0;
   }
   .references > .csl-entry {
     padding-left: 2.5em;
     text-indent: -2.5em;
-    margin-bottom: 0.3em;
+    margin-bottom: .85em;
+    font-family: 'Times New Roman', Times, serif;
   }
   .citation > a {
     text-decoration: none;
@@ -70,6 +71,25 @@ export default {
   }
   section {
     margin-top: 1.8em;
+  }
+  dl {
+    background: rgba(218, 197, 161, 0.431);
+    border: 1px solid rgba(218, 197, 161);
+    padding: 1em 1.3em 0em 1.3em;
+    border-radius: 0.65em;
+    width: 100%;
+    margin: 0 auto;
+  }
+  dt {
+    display: inline-block;
+    font-weight: bold;
+    color: rgb(255, 123, 0);
+    border-bottom: 2px solid rgb(255, 123, 0);
+    padding-bottom: 0;
+  }
+
+  dd p {
+    margin-top: 0.5em;
   }
 }
 
