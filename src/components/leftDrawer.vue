@@ -1,5 +1,4 @@
 <template>
-  <!-- Left drawer -->
   <v-navigation-drawer width="268" app permanent expand-on-hover fixed
   mini-variant-width=66>
     <v-list dense>

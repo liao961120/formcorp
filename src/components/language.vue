@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="langauges d-flex flex-wrap justify-space-around pa-2">
       <template v-for="(content, lang) in data">
         <v-card :key="lang" class="mb-4" width="32%" min-width="210">
@@ -112,24 +111,6 @@
         </v-card>
       </template>
     </div>
-
-    <!-- Top Menu bar -->
-    <v-app-bar flat color="transparent" app min-width="330">
-      <!-- <v-btn
-        @click.stop="drawer = !drawer"
-        icon
-        depressed
-        style="background: #ffd180"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn> -->
-
-      <v-row justify="center" align="center">
-        <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
-        <v-col class="d-none d-sm-flex"> </v-col>
-      </v-row>
-    </v-app-bar>
-  </div>
 </template>
 
 <script>

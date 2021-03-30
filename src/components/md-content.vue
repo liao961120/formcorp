@@ -1,25 +1,5 @@
 <template>
-  <div>
-    <div class="md-content" v-html="rawHTML"></div>
-
-    <!-- Top Menu bar -->
-    <v-app-bar flat color="transparent" app min-width="330">
-      <!-- <v-btn
-        @click.stop="drawer = !drawer"
-        icon
-        depressed
-        style="background: #ffd180"
-      >
-        <v-icon>mdi-menu</v-icon>
-      </v-btn> -->
-
-      <v-row justify="center" align="center">
-        <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
-        <v-col class="d-none d-sm-flex"> </v-col>
-      </v-row>
-    </v-app-bar>
-
-  </div>
+  <div class="md-content" v-html="rawHTML"></div>
 </template>
 
 <script>
@@ -90,6 +70,12 @@ export default {
   }
   section {
     margin-top: 1.8em;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .md-content {
+    width: 100%;
   }
 }
 </style>
