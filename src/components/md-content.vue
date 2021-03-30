@@ -4,14 +4,14 @@
 
     <!-- Top Menu bar -->
     <v-app-bar flat color="transparent" app min-width="330">
-      <v-btn
+      <!-- <v-btn
         @click.stop="drawer = !drawer"
         icon
         depressed
         style="background: #ffd180"
       >
         <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex mr-5"></v-spacer>
@@ -19,22 +19,12 @@
       </v-row>
     </v-app-bar>
 
-    <!-- Left drawer -->
-    <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
-    <Footer></Footer>
   </div>
 </template>
 
 <script>
-import LeftDrawer from "@/components/leftDrawer.vue";
-import Footer from "@/components/footer.vue";
 
 export default {
-  components: {
-    LeftDrawer,
-    Footer,
-  },
-  props: ["drawer"],
   data() {
     return {
       rawHTML: "",
@@ -60,7 +50,7 @@ export default {
   font-size: 1.05em;
   width: 80%;
   text-align: justify;
-  margin: 0.8em auto 2em auto;
+  margin: 0 auto 2em auto;
   padding: 0 auto;
 
   h1 {

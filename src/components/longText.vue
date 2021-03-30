@@ -15,13 +15,13 @@
     <!-- Top Menu bar -->
     <v-app-bar flat color="transparent" app min-width="330">
       <!-- <v-app-bar-nav-icon color="orange red--text accent-1" @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
-      <v-btn @click.stop="drawer = !drawer" icon depressed style="background:#FFD180">
+      <!-- <v-btn @click.stop="drawer = !drawer" icon depressed style="background:#FFD180">
         <v-icon>mdi-menu</v-icon>
-      </v-btn>
+      </v-btn> -->
 
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex"></v-spacer>
-        <v-col cols="6" class="d-none d-sm-flex grey--text text-darken-3 text-h6">
+        <v-col cols="6" class="d-none d-sm-flex justify-center grey--text text-darken-3 text-h6">
           <template>
             {{ text.meta.language.split(', ')[0] }}
           </template>
@@ -35,27 +35,21 @@
         <!-- </v-col> -->
       </v-row>
     </v-app-bar>
-
-    <!-- Left drawer -->
-    <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
   </div>
 </template>
 
 <script>
 import Leipzig from "@/components/LeipzigLongText.vue";
-import LeftDrawer from "@/components/leftDrawer.vue";
 import DocMeta from "@/components/docMeta.vue";
 
 export default {
   components: {
     Leipzig,
-    LeftDrawer,
     DocMeta,
   },
   created: function () {
     this.getAudio();
   },
-  props: ["drawer"],
   data() {
     return {
       text: {},

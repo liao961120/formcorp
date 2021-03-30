@@ -1,16 +1,15 @@
 <template>
   <!-- Left drawer -->
-  <v-navigation-drawer width="268" v-model="drawer" app>
+  <v-navigation-drawer width="268" app permanent expand-on-hover fixed
+  mini-variant-width=66>
     <v-list dense>
-      <v-list-item two-line class="mb-2 ml-0 pl-2">
-        <a href="/">
-          <v-list-item-avatar>
-            <img
-              class="logo"
-              src="https://img.yongfu.name/affiliations/GIL.png"
-            />
-          </v-list-item-avatar>
-        </a>
+      <v-list-item two-line class="px-2">
+        <v-list-item-avatar>
+          <img 
+            class=""
+            src="https://img.yongfu.name/affiliations/GIL.png"
+          />
+        </v-list-item-avatar>
 
         <v-list-item-content>
           <v-list-item-title
@@ -52,16 +51,32 @@
       </v-list-item>
 
       <v-divider></v-divider>
-      <v-subheader class="pb-0 mb-0">External Links</v-subheader>
+      <v-subheader class="pb-0 mb-0 text-caption">外部連結</v-subheader>
 
-      <v-list-item href="https://yongfu.name/docs-gloss-search" target="_blank">
+      <!-- <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank">
         <v-list-item-action>
-          <v-icon>mdi-text-box-multiple</v-icon>
+          <v-icon>mdi-warehouse</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>User Guide</v-list-item-title>
+          <v-list-item-title>台大語言所</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item> -->
+
+      <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank" class="px-3">
+        <v-list-item-action class="mr-2">
+          <v-list-item-avatar>
+            <img
+              src="https://img.yongfu.name/affiliations/GIL.png"
+            />
+          </v-list-item-avatar>
+        </v-list-item-action>
+
+        <v-list-item-content>
+          <v-list-item-title>台大語言所</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
+
+
     </v-list>
 
     <!-- Footer -->

@@ -3,8 +3,9 @@
       v-bind="localAttrs"
       :padless="padless"
       absolute
-      height="15"
+      height="0"
       class="d-none d-md-block d-lg-block d-xl-block"
+      style="z-index: 10"
     >
       <v-card
         flat
@@ -12,25 +13,13 @@
         width="100%"
         class="grey darken-3 text-center"
       >
-        <!-- <v-card-text>
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4"
-            icon
-          >
-            <v-icon size="24px">
-              {{ icon }}
-            </v-icon>
-          </v-btn>
-        </v-card-text> -->
 
         <v-divider></v-divider>
 
         <v-row class="white--text">
           <v-col cols="6">
-          <v-card-text class="text-left ml-5">
-            106 臺北市大安區羅斯福路四段1號 樂學館 <br>
+          <v-card-text class="text-left ml-10">
+            106 臺北市大安區羅斯福路四段一號 樂學館 <br>
             計畫負責人：宋麗梅 <br>
             電子郵件：limay@ntu.edu.tw <br>
             電話：(02) 33664104#308<br>
@@ -40,7 +29,7 @@
           </v-col>
 
           <v-col cols="6">
-            <v-img src="@/assets/ntulogo-black2.png" max-width="75%" class="mt-4 mr-8 ml-auto"></v-img>
+            <v-img src="@/assets/ntulogo-black2.png" max-width="65%" class="mt-6 mr-13 ml-auto"></v-img>
           </v-col>
             
         </v-row>

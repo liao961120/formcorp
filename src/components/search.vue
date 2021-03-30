@@ -21,7 +21,7 @@
 
     <!-- Top Menu bar -->
     <v-app-bar app color="orange accent-1" min-width="330">
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <!-- <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon> -->
       <v-row justify="center" align="center">
         <v-col>
           <v-text-field
@@ -87,7 +87,7 @@
             <v-icon v-else>mdi-magnify</v-icon>
           </v-btn>
 
-          <v-btn class="ml-4 mr-0 px-0" small fab dark color="cyan lighten-1" outlined @click="copyShareURL" title="Copy share URL">
+          <v-btn class="ml-4 mr-0 px-0 d-none d-sm-inline-block" small fab dark color="cyan lighten-1" outlined @click="copyShareURL" title="Copy share URL">
             <v-icon>mdi-share-variant</v-icon>
           </v-btn>
         </v-col>
@@ -129,23 +129,18 @@
       <span></span>
     </v-bottom-navigation>
 
-    <!-- Left drawer -->
-    <LeftDrawer v-bind:drawer="drawer"></LeftDrawer>
   </div>
 </template>
 
 <script>
 import Leipzig from "@/components/Leipzig.vue";
-import LeftDrawer from "@/components/leftDrawer.vue";
 // @ is an alias to /src
 
 export default {
   name: "gloss-search",
   components: {
     Leipzig,
-    LeftDrawer,
   },
-  props: ["drawer"],
   data() {
     return {
       search_results_key: 0,

@@ -11,7 +11,7 @@
         </v-main>
 
       <!-- Scroll to Top/Bottom -->
-      <v-speed-dial v-model="nav" fixed bottom right>
+      <v-speed-dial v-model="nav" fixed bottom right style="z-index: 1000">
         <template v-slot:activator>
           <v-btn v-model="nav" color="blue-grey" dark fab x-small>
             <v-icon v-if="nav">mdi-close</v-icon>
@@ -25,11 +25,21 @@
               <v-icon>mdi-chevron-up</v-icon>
           </v-btn>
       </v-speed-dial>
+
+      <LeftDrawer></LeftDrawer>
+      <Footer></Footer>
     </v-app>
 </template>
 
 <script>
+import Footer from "@/components/footer.vue";
+import LeftDrawer from "@/components/leftDrawer.vue";
+
 export default {
+    components: {
+        LeftDrawer,
+        Footer
+    },
     props: {
         source: String
     },
