@@ -29,7 +29,7 @@
           </v-col>
 
           <v-col cols="6">
-            <v-img src="@/assets/ntulogo-black2.png" max-width="65%" class="mt-6 mr-13 ml-auto"></v-img>
+            <v-img eager src="@/assets/ntulogo-black2.png" max-width="65%" class="mt-6 mr-13 ml-auto"></v-img>
           </v-col>
             
         </v-row>
