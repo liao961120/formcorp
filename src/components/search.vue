@@ -283,7 +283,7 @@ export default {
         f: this.docfilter
       }
       document.execCommand("copy");
-      return `${baseURL}#/?query=${p.q}&regex=${p.r}&type=${p.t}&filter=${p.f}`;
+      return `${baseURL}#${this.$route.path}?query=${p.q}&regex=${p.r}&type=${p.t}&filter=${p.f}`;
     }
   },
   created: function () {
