@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Search from "../components/search.vue";
-import MdContent from "../components/md-content.vue";
+// import MdContent from "../components/md-content.vue";
 //import Glossary from "./components/glossary.vue"
 
 Vue.use(VueRouter)
@@ -10,7 +10,7 @@ Vue.use(VueRouter)
   {
     path: '/',
     name: 'About',
-    component: MdContent
+    component: () => import('../components/md-content.vue')
   },
   {
     path: '/search/',
@@ -29,15 +29,7 @@ Vue.use(VueRouter)
     path: '/language/',
     name: 'Language',
     component: () => import('../components/language.vue')
-  },
-  {
-    path: '/about/',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../components/md-content.vue')
-  },
+  }
 ]
 
 const router = new VueRouter({
