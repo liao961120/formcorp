@@ -1,1 +1,1 @@
-# 南島語料庫後端管理說明文件
+# Formosan Corpus
