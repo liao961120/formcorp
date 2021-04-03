@@ -1,36 +1,23 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Search from "../components/search.vue";
 // import MdContent from "../components/md-content.vue";
-//import Glossary from "./components/glossary.vue"
 
 Vue.use(VueRouter)
 
   const routes = [
-  {
-    path: '/',
-    name: 'About',
-    component: () => import('../components/md-content.vue')
-  },
-  {
-    path: '/search/',
-    name: 'Search',
-    component: Search
-  },
-  {
-    path: '/long-text/:id',
-    name: 'LongText',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import('../components/longText.vue')
-  },
-  {
-    path: '/language/',
-    name: 'Language',
-    component: () => import('../components/language.vue')
-  }
-]
+    {
+      path: '/',
+      component: () => import('../components/md-content.vue')
+    },
+    {
+      path: '/update',
+      component: () => import('../components/TriggerBuild.vue')
+    },
+    {
+      path: '/:name',
+      component: () => import('../components/md-content.vue')
+    }
+  ]
 
 const router = new VueRouter({
   "routes": routes,

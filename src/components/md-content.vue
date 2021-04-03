@@ -1,23 +1,27 @@
 <template>
-  <div class="md-content" v-html="rawHTML"></div>
+    <div class="md-content" v-html="rawHTML"></div>
 </template>
 
 <script>
+import marked  from 'marked';
 
 export default {
   data() {
     return {
       rawHTML: "",
+      baseURL: "./markdown"
     };
   },
   computed: {
     src() {
-      return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
+      if (this.$router.currentRoute.path != '/')
+        return `${this.baseURL}/${this.$route.params.name.toLowerCase()}.md`;
+      return `${this.baseURL}/home.md`;
     },
   },
   created: function () {
     this.$http.get(this.src).then(function (data) {
-      this.rawHTML = data.body;
+      this.rawHTML = marked(data.body, { smartypants: true });
     });
   },
 };

@@ -4,9 +4,9 @@ import router from './router'
 import vuetify from './plugins/vuetify';
 import VueResource from 'vue-resource'
 import VModal from 'vue-js-modal'
-// import VueCryptojs from 'vue-cryptojs'
+import VueCryptojs from 'vue-cryptojs'
 
-// Vue.use(VueCryptojs)  // Encryption
+Vue.use(VueCryptojs)  // Encryption
 Vue.use(VueResource)  // http requests
 Vue.use(VModal)
 
