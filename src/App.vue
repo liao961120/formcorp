@@ -1,7 +1,7 @@
 <template>
     <v-app id="inspire">
         <v-main>
-            <v-container class="fill-height" fluid>
+            <v-container fluid>
                 <v-row align="center" class="mx-7 pa-0 full-width">
                     <keep-alive>
                         <router-view :key="$route.fullPath"></router-view>

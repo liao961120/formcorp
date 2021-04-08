@@ -13,6 +13,11 @@ Vue.use(VueRouter)
     component: () => import('../components/md-content.vue')
   },
   {
+    path: '/resources/',
+    name: 'external_links',
+    component: () => import('../components/md-content.vue')
+  },
+  {
     path: '/search/',
     name: 'Search',
     component: Search

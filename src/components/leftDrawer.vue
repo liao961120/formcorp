@@ -49,7 +49,7 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link router to="#" active-class="deep-orange--text">
+      <v-list-item link router to="/resources/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-link-variant</v-icon>
         </v-list-item-action>
