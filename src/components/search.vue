@@ -104,7 +104,7 @@
       color="blue-grey lighten-4"
       class="d-flex d-md-none"
     >
-      <span class="ml-0 mr-8" style="width: 32%">
+      <span class="ml-0 mr-3" style="width: 33%">
         <v-select
           :items="docfilterSelect"
           v-model="docfilter"
@@ -114,7 +114,7 @@
           class="mt-2 mx-0"
         ></v-select>
       </span>
-      <span class="mr-0" style="width: 32%">
+      <span class="mx-0" style="width: 29%">
         <v-switch
           v-model="query.regex"
           value="1"
@@ -127,6 +127,9 @@
           class="mt-3"
         ></v-switch>
       </span>
+      <v-btn style="width:15%" class="mx-0 px-0" @click="copyShareURL" title="Copy share URL">
+        <v-icon>mdi-share-variant</v-icon>
+      </v-btn>
       <span></span>
     </v-bottom-navigation>
 
