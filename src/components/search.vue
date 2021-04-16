@@ -274,10 +274,10 @@ export default {
     shareURL: function() {
       var baseURL = window.location.href.replace(/#\/.*$/, '');
       var p = {
-        q: this.query.query,
-        r: this.query.regex,
-        t: this.query.type,
-        f: this.docfilter
+        q: encodeURIComponent(this.query.query),
+        r: encodeURIComponent(this.query.regex),
+        t: encodeURIComponent(this.query.type),
+        f: encodeURIComponent(this.docfilter)
       }
       document.execCommand("copy");
       return `${baseURL}#${this.$route.path}?query=${p.q}&regex=${p.r}&type=${p.t}&filter=${p.f}`;
