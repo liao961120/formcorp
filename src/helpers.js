@@ -2,7 +2,7 @@
 
 // For Leipzig.vue
 export class Highlight {
-    static highlight(tk, query, isRegex, ignoreCharSet) {
+    static highlight(tk, query, isRegex, ignoreCharSet, proxyCharSet) {
         var query_arr = query.split(/\s*&&\s*/).map(x => x.trim());
 
         // RegEx search
@@ -18,8 +18,8 @@ export class Highlight {
             // Exact search
         } else {
             for (var j = 0; j < query_arr.length; j++) {
-                var norm_tk = normToken(tk, ignoreCharSet);
-                var norm_q = normToken(query_arr[j], ignoreCharSet);
+                var norm_tk = normToken(tk, ignoreCharSet, proxyCharSet);
+                var norm_q = normToken(query_arr[j], ignoreCharSet, proxyCharSet);
                 if (tk.includes(query_arr[j])) {
                     tk = tk.replace(query_arr[j], myReplace2);
                     break
@@ -42,8 +42,10 @@ function myReplace2(str) {
 function myReplace3(str) {
     return "<span class='matchedtoken fuzzy'>" + str.replace('<', '&lt;').replace('>', '&gt;') + "</span>"
 }
-function normToken(x, ignoreCharSet) {
-    for (var i = 0; i < ignoreCharSet.length; i++)
+function normToken(x, ignoreCharSet, proxyCharSet) {
+    for (let i = 0; i < ignoreCharSet.length; i++)
         x = x.replaceAll(ignoreCharSet[i], "")
+    for (let i = 0; i < proxyCharSet.length; i++)
+        x = x.replaceAll(proxyCharSet[i][0], proxyCharSet[i][1]); 
     return x.toLowerCase()
 }

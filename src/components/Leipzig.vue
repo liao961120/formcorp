@@ -93,7 +93,7 @@
 import { Highlight } from "@/helpers.js";
 
 export default {
-  props: ["gloss", "query", "showplaintext", "ignoreCharSet"],
+  props: ["gloss", "query", "showplaintext", "ignoreCharSet", "proxyCharSet"],
   data() {
     return {
       audio_url: "https://yongfu.name/FormCorp-audio", // no slash at end
@@ -112,7 +112,8 @@ export default {
               tk,
               query_str,
               this.query.regex,
-              this.ignoreCharSet
+              this.ignoreCharSet,
+              this.proxyCharSet
             )
           )
           .join(" ");
@@ -121,7 +122,8 @@ export default {
           this.gloss.ori.join(" "),
           query_str,
           this.query.regex,
-          this.ignoreCharSet
+          this.ignoreCharSet,
+          this.proxyCharSet
         );
       else return this.gloss.ori.join(" ");
     },
@@ -135,19 +137,22 @@ export default {
             tup[0],
             query_str,
             this.query.regex,
-            this.ignoreCharSet
+            this.ignoreCharSet,
+            this.proxyCharSet
           ),
           Highlight.highlight(
             tup[1],
             query_str,
             this.query.regex,
-            this.ignoreCharSet
+            this.ignoreCharSet,
+            this.proxyCharSet
           ),
           Highlight.highlight(
             tup[2],
             query_str,
             this.query.regex,
-            this.ignoreCharSet
+            this.ignoreCharSet,
+            this.proxyCharSet
           ),
         ]);
       else return this.gloss.gloss;
@@ -161,7 +166,8 @@ export default {
             sent,
             this.query.query,
             this.query.regex,
-            this.ignoreCharSet
+            this.ignoreCharSet,
+            this.proxyCharSet
           )
         );
       else return this.gloss.free;

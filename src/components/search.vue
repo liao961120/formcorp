@@ -7,6 +7,7 @@
           v-bind:query="query"
           v-bind:showplaintext="false"
           v-bind:ignoreCharSet="ignoreCharSet"
+          v-bind:proxyCharSet="proxyCharSet"
           :key="i"
         />
       </template>
@@ -177,7 +178,8 @@ export default {
         { text: "全部", value: "" },
       ],
       infscroll: 15,
-      ignoreCharSet: ",_/^’\\-='<>.:".split(""),
+      ignoreCharSet: ",_/^’\\-='<>.:()".split(""),
+      proxyCharSet: [ ['ʉ', 'u'] ],
     };
   },
   computed: {
@@ -300,8 +302,10 @@ export default {
   },
   methods: {
     normToken: function (x) {
-      for (var i = 0; i < this.ignoreCharSet.length; i++)
+      for (let i = 0; i < this.ignoreCharSet.length; i++)
         x = x.replaceAll(this.ignoreCharSet[i], "");
+      for (let i = 0; i < this.proxyCharSet.length; i++)
+        x = x.replaceAll(this.proxyCharSet[i][0], this.proxyCharSet[i][1]); 
       return x.toLowerCase();
     },
     handleScroll: function () {
