@@ -31,21 +31,21 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item link router to="/search/" active-class="deep-orange--text">
-        <v-list-item-action>
-          <v-icon>mdi-magnify</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>語料搜尋</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
       <v-list-item link router to="/language/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-microphone-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>收錄語言</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item link router to="/search/" active-class="deep-orange--text">
+        <v-list-item-action>
+          <v-icon>mdi-magnify</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>語料搜尋</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 

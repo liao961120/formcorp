@@ -168,7 +168,7 @@ export default {
       docfilter: (this.$route.query.filter) ? this.$route.query.filter : "Amis_Ciwkangan",
       docfilterSelect: [
         { text: "阿美 (長光)", value: "Amis_Ciwkangan" },
-        { text: "葛瑪蘭 (新社)", value: "Kavalan_Xinshe" },
+        { text: "噶瑪蘭 (新社)", value: "Kavalan_Xinshe" },
         { text: "撒奇萊雅", value: "Sakizaya_Sakizaya" },
         { text: "魯凱 (霧台)", value: "Rukai_Vedai" },
         { text: "賽夏 (東河)", value: "Saisiyat_Tong-he" },
