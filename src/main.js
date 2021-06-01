@@ -12,7 +12,6 @@ Vue.use(VueResource)  // http requests
 Vue.use(VModal)
 Vue.use(VueI18n)
 
-// Ready translated locale messages
 const messages = {
   en: {
     hello: 'hello world',
@@ -72,10 +71,6 @@ const messages = {
     "臺灣大學語言學研究所": "臺灣大學語言學研究所",
   }
 }
-
-
-
-
 // Create VueI18n instance with options
 const i18n = new VueI18n({
   locale: localStorage.getItem('locale') || 'tw', // set locale
