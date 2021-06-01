@@ -19,8 +19,8 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
 
-      <span style="position:fixed;left:1rem;top:1rem;color:grey">
-        {{ text.meta.video.split('.')[0] }}
+      <span style="position:fixed;right:1rem;top:1rem;color:grey">
+        {{ `${filename.split('/').pop()}.txt` }}
       </span>
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex"></v-spacer>
@@ -57,6 +57,7 @@ export default {
     return {
       text: {},
       src: `https://yongfu.name/glossParser/${this.$route.params.id}.json`,
+      filename: `${this.$route.params.id}`,
       currGroupNum: false,
       lastSentEndNum: [],
       hash: this.$route.hash,
