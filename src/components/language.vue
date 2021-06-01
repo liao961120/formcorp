@@ -26,12 +26,28 @@
                 <v-list-item>
                   <v-list-item-icon :class="hover ? '' : 'transparent--text'">
                     <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
+                      >mdi-information-outline</v-icon
+                    >
+                    <span
+                      :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
+                      style="display: inline-block; min-width: 5.9em"
+                      >{{ $t("IU數") }}</span
+                    >
+                    <span style="display: inline-block">
+                      {{ content.summary.story.iu_num }}
+                    </span>
+                  </v-list-item-icon>
+                </v-list-item>
+
+                <v-list-item>
+                  <v-list-item-icon :class="hover ? '' : 'transparent--text'">
+                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
                       >mdi-lead-pencil</v-icon
                     >
                     <span
                       :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
-                      style="display: inline-block; min-width: 5.5em"
-                      >句數</span
+                      style="display: inline-block; min-width: 5.9em"
+                      >{{ $t("句數") }}</span
                     >
                     <span style="display: inline-block">
                       {{
@@ -45,28 +61,12 @@
                 <v-list-item>
                   <v-list-item-icon :class="hover ? '' : 'transparent--text'">
                     <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
-                      >mdi-information-outline</v-icon
-                    >
-                    <span
-                      :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
-                      style="display: inline-block; min-width: 5.5em"
-                      >IU數</span
-                    >
-                    <span style="display: inline-block">
-                      {{ content.summary.story.iu_num }}
-                    </span>
-                  </v-list-item-icon>
-                </v-list-item>
-
-                <v-list-item>
-                  <v-list-item-icon :class="hover ? '' : 'transparent--text'">
-                    <v-icon :class="hover ? 'grey--text' : 'transparent--text'"
                       >mdi-av-timer</v-icon
                     >
                     <span
                       :class="hover ? 'pl-2 grey--text text--darken-2' : ''"
-                      style="display: inline-block; min-width: 5.5em"
-                      >長度</span
+                      style="display: inline-block; min-width: 5.9em"
+                      >{{ $t("長度") }}</span
                     >
                     <span style="display: inline-block">
                       {{ formatTime(content.summary.story.record_time) }}
@@ -79,7 +79,7 @@
 
           <div class="my-3 text-center">
             <TextInfo
-              :title="`句子`"
+              :title="$t('句子')"
               :texttype="'Sentence'"
               :btnColor="'deep-orange'"
               :meta="content.text.filter((elem) => elem.type == 'Sentence')"
@@ -89,7 +89,7 @@
             <span class="mx-2"></span>
 
             <TextInfo
-              :title="'故事'"
+              :title="$t('故事')"
               :texttype="'Story'"
               :btnColor="'info'"
               :meta="content.text.filter((elem) => elem.type != 'Sentence')"
@@ -101,14 +101,12 @@
             <v-btn 
               small
               color="warning lighten-1`"
-              v-bind="attrs"
-              v-on="on"
               :href="langInfo[lang].bookURL"
               target="_blank"
               :disabled="langInfo[lang].bookURL == ''"
               :dark="langInfo[lang].bookURL != ''"
             >
-              <b>語法書</b>
+              <b>{{ $t('語法書') }}</b>
             </v-btn>
           </div>
         </v-card>
@@ -128,11 +126,18 @@ export default {
       const h = Math.floor(seconds / 3600);
       const m = Math.floor((seconds % 3600) / 60);
       const s = Math.round(seconds % 60);
-      return [
-        h == 0 ? "" : `${h} 小時`,
-        `${m > 9 ? m : h ? "0" + m : m || "0"} 分`,
-        `${s > 9 ? s : "0" + s} 秒`,
-      ].join(" ");
+      if (this.$i18n.locale == 'tw')
+        return [
+          h == 0 ? "" : `${h} 小時`,
+          `${m > 9 ? m : h ? "0" + m : m || "0"} 分`,
+          `${s > 9 ? s : "0" + s} 秒`,
+        ].join(" ");
+      else
+        return [
+          h == 0 ? "" : `${h} hr`,
+          `${m > 9 ? m : h ? "0" + m : m || "0"} min`,
+          `${s > 9 ? s : "0" + s} sec`,
+        ].join(" ");
     },
   },
   data() {

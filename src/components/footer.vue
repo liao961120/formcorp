@@ -19,11 +19,11 @@
         <v-row class="white--text">
           <v-col cols="6">
           <v-card-text class="text-left ml-10">
-            106 臺北市大安區羅斯福路四段一號 樂學館 <br>
-            計畫負責人：宋麗梅 <br>
-            電子郵件：limay@ntu.edu.tw <br>
-            電話：(02) 33664104#308<br>
-            傳真：(02) 23635358
+            {{ $t("樂學地址") }} <br>
+            {{ $t("計畫負責人") }} <br>
+            {{ $t("電子郵件：") }}limay@ntu.edu.tw <br>
+            {{ $t("電話：") }}(02) 33664104#308<br>
+            {{ $t("傳真：") }}(02) 23635358
           </v-card-text>
 
           </v-col>
@@ -35,7 +35,7 @@
         </v-row>
 
         <v-card-text class="white--text">
-          Copyright © 2020-{{ new Date().getFullYear() }} <strong>臺灣大學語言學研究所</strong>
+          Copyright © 2020-{{ new Date().getFullYear() }} <strong>{{ $t("臺灣大學語言學研究所") }}</strong>
         </v-card-text>
       </v-card>
     </v-footer>

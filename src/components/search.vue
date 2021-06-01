@@ -27,7 +27,7 @@
         <v-col>
           <v-text-field
             spellcheck="false"
-            placeholder="搜尋字串"
+            :placeholder="$t('搜尋字串')"
             :value="query_lazy"
             @change="(v) => (query_lazy = v)"
             outlined
@@ -40,23 +40,27 @@
 
         <v-col cols="2" class="d-none d-md-flex">
           <v-select
-            :items="docfilterSelect"
+            :items="
+              this.$i18n.locale == 'tw'
+                ? docfilterSelect.tw
+                : docfilterSelect.en
+            "
             v-model="docfilter"
             dense
             class="mt-6 px-0"
             outlined
-            label="語言"
+            :label="$t('語言')"
           ></v-select>
         </v-col>
 
         <v-col cols="2" class="d-none d-md-flex">
           <v-select
-            :items="querytypes"
+            :items="this.$i18n.locale == 'tw' ? querytypes.tw : querytypes.en"
             v-model="query.type"
             dense
             class="mt-6 px-0"
             outlined
-            label="搜尋範圍"
+            :label="$t('搜尋範圍')"
           ></v-select>
         </v-col>
 
@@ -66,7 +70,7 @@
             value="1"
             :true-value="1"
             :false-value="0"
-            :label="query.regex == '1' ? '表達式' : '標準'"
+            :label="query.regex == '1' ? $t('表達式') : $t('標準')"
             inset
             dense
             class="mt-4"
@@ -88,14 +92,23 @@
             <v-icon v-else>mdi-magnify</v-icon>
           </v-btn>
 
-          <v-btn class="ml-4 mr-0 px-0 d-none d-sm-inline-block" small fab dark color="cyan lighten-1" outlined @click="copyShareURL" title="Copy share URL">
+          <v-btn
+            class="ml-4 mr-0 px-0 d-none d-sm-inline-block"
+            small
+            fab
+            dark
+            color="cyan lighten-1"
+            outlined
+            @click="copyShareURL"
+            title="Copy share URL"
+          >
             <v-icon>mdi-share-variant</v-icon>
           </v-btn>
         </v-col>
       </v-row>
     </v-app-bar>
 
-    <input v-model="shareURL" ref="text" type="hidden">
+    <input v-model="shareURL" ref="text" type="hidden" />
     <!-- Bottom Menu bar for mobile -->
     <v-bottom-navigation
       app
@@ -106,7 +119,11 @@
     >
       <span class="ml-0 mr-3" style="width: 33%">
         <v-select
-          :items="docfilterSelect"
+          :items="
+              this.$i18n.locale == 'tw'
+                ? docfilterSelect.tw
+                : docfilterSelect.en
+            "
           v-model="docfilter"
           dense
           outlined
@@ -127,12 +144,16 @@
           class="mt-3"
         ></v-switch>
       </span>
-      <v-btn style="width:15%" class="mx-0 px-0" @click="copyShareURL" title="Copy share URL">
+      <v-btn
+        style="width: 15%"
+        class="mx-0 px-0"
+        @click="copyShareURL"
+        title="Copy share URL"
+      >
         <v-icon>mdi-share-variant</v-icon>
       </v-btn>
       <span></span>
     </v-bottom-navigation>
-
   </div>
 </template>
 
@@ -150,39 +171,69 @@ export default {
       search_results_key: 0,
       database: "https://yongfu.name/glossParser/all_lang.json",
       results: [],
-      querytypes: [
-        {
-          text: "語料",
-          value: "gloss",
-        },
-        {
-          text: "註釋",
-          value: "free",
-        },
-      ],
-      query: {
-        query: (this.$route.query.query) ? this.$route.query.query : "",
-        regex: (this.$route.query.regex) ? this.$route.query.regex : 0,
-        type: (this.$route.query.type) ? this.$route.query.type : "gloss",
+      querytypes: {
+        tw: [
+          {
+            text: "語料",
+            value: "gloss",
+          },
+          {
+            text: "註釋",
+            value: "free",
+          },
+        ],
+        en: [
+          {
+            text: "Gloss Lines",
+            value: "gloss",
+          },
+          {
+            text: "Free Lines",
+            value: "free",
+          },
+        ],
       },
-      docfilter: (this.$route.query.filter) ? this.$route.query.filter : "Amis_Ciwkangan",
-      docfilterSelect: [
-        { text: "阿美 (長光)", value: "Amis_Ciwkangan" },
-        { text: "噶瑪蘭 (新社)", value: "Kavalan_Xinshe" },
-        { text: "撒奇萊雅", value: "Sakizaya_Sakizaya" },
-        { text: "魯凱 (霧台)", value: "Rukai_Vedai" },
-        { text: "賽夏 (東河)", value: "Saisiyat_Tong-he" },
-        { text: "泰雅 (汶水)", value: "Atayal_Mayrinax" },
-        { text: "賽德克 (Tgdaya)", value: "Seediq_Tgdaya" },
-        { text: "布農 (Isbukun)", value: "Bunun_Isbukun" },
-        { text: "鄒語 (TapangU)", value: "Tsou_TapangU" },
-        { text: "鄒語 (Tfya)", value: "Tsou_Tfya" },
-        { text: "卡那卡那富", value: "Kanakanavu_Kanakanavu" },
-        { text: "全部", value: "" },
-      ],
+      query: {
+        query: this.$route.query.query ? this.$route.query.query : "",
+        regex: this.$route.query.regex ? this.$route.query.regex : 0,
+        type: this.$route.query.type ? this.$route.query.type : "gloss",
+      },
+      docfilter: this.$route.query.filter
+        ? this.$route.query.filter
+        : "Amis_Ciwkangan",
+      docfilterSelect: {
+        tw: [
+          { text: "阿美 (長光)", value: "Amis_Ciwkangan" },
+          { text: "噶瑪蘭 (新社)", value: "Kavalan_Xinshe" },
+          { text: "撒奇萊雅", value: "Sakizaya_Sakizaya" },
+          { text: "魯凱 (霧台)", value: "Rukai_Vedai" },
+          { text: "賽夏 (東河)", value: "Saisiyat_Tong-he" },
+          { text: "泰雅 (汶水)", value: "Atayal_Mayrinax" },
+          { text: "賽德克 (Tgdaya)", value: "Seediq_Tgdaya" },
+          { text: "布農 (Isbukun)", value: "Bunun_Isbukun" },
+          { text: "鄒語 (TapangU)", value: "Tsou_TapangU" },
+          { text: "鄒語 (Tfya)", value: "Tsou_Tfya" },
+          { text: "卡那卡那富", value: "Kanakanavu_Kanakanavu" },
+          { text: "全部", value: "" },
+        ],
+        en: [
+          { text: "Amis (Ciwkangan)", value: "Amis_Ciwkangan" },
+          { text: "Kavalan (Xinshe)", value: "Kavalan_Xinshe" },
+          { text: "Sakizaya", value: "Sakizaya_Sakizaya" },
+          { text: "Rukai (Vedai)", value: "Rukai_Vedai" },
+          { text: "Saisiyat (Tong he)", value: "Saisiyat_Tong-he" },
+          { text: "Atayal (Mayrinax)", value: "Atayal_Mayrinax" },
+          { text: "Seediq (Tgdaya)", value: "Seediq_Tgdaya" },
+          { text: "Bunun (Isbukun)", value: "Bunun_Isbukun" },
+          { text: "Tsou (TapangU)", value: "Tsou_TapangU" },
+          { text: "Tsou (Tfya)", value: "Tsou_Tfya" },
+          { text: "Kanakanavu", value: "Kanakanavu_Kanakanavu" },
+          { text: "All", value: "" },
+        ],
+      },
       infscroll: 15,
       ignoreCharSet: ",_/^’\\-='<>.:()".split(""),
-      proxyCharSet: [ ['ʉ', 'u'] ],
+      proxyCharSet: [["ʉ", "u"]],
     };
   },
   computed: {
@@ -274,17 +325,17 @@ export default {
     vue_seach_results_lazy: function () {
       return this.vue_seach_results.slice(0, this.infscroll);
     },
-    shareURL: function() {
-      var baseURL = window.location.href.replace(/#\/.*$/, '');
+    shareURL: function () {
+      var baseURL = window.location.href.replace(/#\/.*$/, "");
       var p = {
         q: encodeURIComponent(this.query.query),
         r: encodeURIComponent(this.query.regex),
         t: encodeURIComponent(this.query.type),
-        f: encodeURIComponent(this.docfilter)
-      }
+        f: encodeURIComponent(this.docfilter),
+      };
       document.execCommand("copy");
       return `${baseURL}#${this.$route.path}?query=${p.q}&regex=${p.r}&type=${p.t}&filter=${p.f}`;
-    }
+    },
   },
   created: function () {
     this.$http.get(this.database).then(function (data) {
@@ -308,7 +359,7 @@ export default {
       for (let i = 0; i < this.ignoreCharSet.length; i++)
         x = x.replaceAll(this.ignoreCharSet[i], "");
       for (let i = 0; i < this.proxyCharSet.length; i++)
-        x = x.replaceAll(this.proxyCharSet[i][0], this.proxyCharSet[i][1]); 
+        x = x.replaceAll(this.proxyCharSet[i][0], this.proxyCharSet[i][1]);
       return x.toLowerCase();
     },
     handleScroll: function () {
@@ -323,13 +374,15 @@ export default {
     forceReload: function () {
       this.search_results_key += 1;
     },
-    copyShareURL: function() {
-      this.$refs.text.type = 'text';
+    copyShareURL: function () {
+      this.$refs.text.type = "text";
       this.$refs.text.select();
-      document.execCommand('copy');
-      this.$refs.text.type = 'hidden';
-      alert("已複製分享網址至剪貼簿\n使用此網址分享你的搜尋結果\nCopied share URL!\nUse this URL to share your current search results");
-    }
+      document.execCommand("copy");
+      this.$refs.text.type = "hidden";
+      alert(
+        "已複製分享網址至剪貼簿\n使用此網址分享你的搜尋結果\nCopied share URL!\nUse this URL to share your current search results"
+      );
+    },
   },
 };
 </script>

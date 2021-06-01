@@ -27,7 +27,7 @@
           <v-icon>mdi-information-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>關於我們</v-list-item-title>
+          <v-list-item-title>{{ $t('關於我們') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -36,7 +36,7 @@
           <v-icon>mdi-microphone-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>收錄語言</v-list-item-title>
+          <v-list-item-title>{{ $t('收錄語言') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -45,7 +45,7 @@
           <v-icon>mdi-magnify</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>語料搜尋</v-list-item-title>
+          <v-list-item-title>{{ $t('語料搜尋') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -54,7 +54,16 @@
           <v-icon>mdi-link-variant</v-icon>
         </v-list-item-action>
         <v-list-item-content>
-          <v-list-item-title>相關資源</v-list-item-title>
+          <v-list-item-title>{{ $t('相關資源') }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item @click="locale_tw = !locale_tw">
+        <v-list-item-action>
+          <v-icon>mdi-translate</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{ locale_tw ? 'English' : '繁體中文' }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
@@ -80,11 +89,9 @@
         </v-list-item-action>
 
         <v-list-item-content>
-          <v-list-item-title>台大語言所</v-list-item-title>
+          <v-list-item-title>{{ $t('台大語言所') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-
-
     </v-list>
 
     <!-- Footer -->
@@ -132,8 +139,23 @@ export default {
   props: ["drawer"],
   data() {
     return {
-      // drawer2: this.drawer,
+      locale_tw: true,
     };
+  },
+  watch: {
+    locale_tw(bool) {
+      if (bool) {
+        this.$i18n.locale = "tw";
+        localStorage.setItem("locale", "tw");
+      } else {
+        this.$i18n.locale = "en";
+        localStorage.setItem("locale", "en");
+      }
+    },
+  },
+  created: function () {
+    if (this.$i18n.locale == "tw") this.locale_tw = true;
+    else this.locale_tw = false;
   },
 };
 </script>

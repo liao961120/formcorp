@@ -12,7 +12,11 @@ export default {
   },
   computed: {
     src() {
-      return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
+      if (this.$i18n.locale == 'tw')
+        return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
+      // To Do: markdown content translations
+      else
+        return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
     },
   },
   created: function () {
