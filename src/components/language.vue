@@ -3,7 +3,7 @@
       <template v-for="(content, lang) in data">
         <v-card :key="lang" class="mb-4" width="32%" min-width="210">
           <v-card-title>
-            <b>{{ langNames[lang] }}</b>
+            <b>{{ langInfo[lang].name }}</b>
           </v-card-title>
           <v-card-subtitle>
             {{ lang.split("_")[0] }}
@@ -98,12 +98,15 @@
 
             <span class="mx-2"></span>
 
-            <v-btn
+            <v-btn 
               small
               color="warning lighten-1`"
-              dark
               v-bind="attrs"
               v-on="on"
+              :href="langInfo[lang].bookURL"
+              target="_blank"
+              :disabled="langInfo[lang].bookURL == ''"
+              :dark="langInfo[lang].bookURL != ''"
             >
               <b>語法書</b>
             </v-btn>
@@ -136,18 +139,51 @@ export default {
     return {
       data: {},
       database: "https://yongfu.name/glossParser/text-meta.json",
-      langNames: {
-        Rukai_Vedai: "魯凱 (霧台)",
-        Amis_Ciwkangan: "阿美 (長光)",
-        "Saisiyat_Tong-he": "賽夏 (東河)",
-        Sakizaya_Sakizaya: "撒奇萊雅",
-        Kavalan_Xinshe: "噶瑪蘭 (新社)",
-        Atayal_Mayrinax: "泰雅 (汶水)",
-        Seediq_Tgdaya: "賽德克 (Tgdaya)",
-        Tsou_TapangU: "鄒語 (TapangU)",
-        Tsou_Tfya: "鄒語 (Tfya)",
-        Bunun_Isbukun: "布農 (Isbukun)",
-        Kanakanavu_Kanakanavu: "卡那卡那富",
+      langInfo: {
+        Rukai_Vedai: {
+          name: "魯凱 (霧台)",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=8&p=2",
+          },
+        Amis_Ciwkangan: {
+          name: "阿美 (長光)",
+          bookURL: "",
+          },
+        "Saisiyat_Tong-he": {
+          name: "賽夏 (東河)",
+          bookURL: "",
+          },
+        Sakizaya_Sakizaya: {
+          name: "撒奇萊雅",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=14&p=2",
+          },
+        Kavalan_Xinshe: {
+          name: "噶瑪蘭 (新社)",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=10&p=2",
+          },
+        Atayal_Mayrinax: {
+          name: "泰雅 (汶水)",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=2&p=2",
+          },
+        Seediq_Tgdaya: {
+          name: "賽德克 (Tgdaya)",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=5&p=2",
+          },
+        Tsou_TapangU: {
+          name: "鄒語 (TapangU)",
+          bookURL: "",
+          },
+        Tsou_Tfya: {
+          name: "鄒語 (Tfya)",
+          bookURL: "",
+          },
+        Bunun_Isbukun: {
+          name: "布農 (Isbukun)",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=6&p=2",
+          },
+        Kanakanavu_Kanakanavu: {
+          name: "卡那卡那富",
+          bookURL: "http://ilrdc.tw/grammar/index.php?l=15&p=2",
+          },
       },
     };
   },
