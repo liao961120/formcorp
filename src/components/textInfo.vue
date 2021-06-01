@@ -22,7 +22,7 @@
         <template v-slot:default>
           <thead>
             <tr>
-              <template v-for="(v, k) in meta[0]">
+              <template v-for="k in filterMetaKeys(meta[0])">
                 <th class="text-left" :key="k">
                   <v-icon v-text="metaMap[k].icon"></v-icon>
                   {{ metaMap[k].name }}
@@ -33,12 +33,12 @@
           </thead>
           <tbody>
             <tr v-for="(text, i) in metaSorted" :key="i + '0'" class="text-caption">
-              <template v-for="(v, k) in text">
+              <template v-for="k in filterMetaKeys(text)">
                 <td v-if="k == 'record_time'" :key="k + '0' + i">
-                  {{ formatTime(v) }}
+                  {{ formatTime(text.record_time) }}
                 </td>
                 <td v-else-if="k == 'collected'" :key="k + '0' + i">
-                  <template v-if="isValidDate(v)">{{ v }}</template>
+                  <template v-if="isValidDate(text.collected)">{{ text.collected }}</template>
                   <template v-else>?</template>
                 </td>
                 <td v-else :key="k + '0' + i">
@@ -47,16 +47,16 @@
                     params: { id: `story/${text.file}` }, 
                     hash: '#'}"
                     class="router-link">
-                      {{ v }}
+                      {{ text[k] }}
                     </router-link>
                     <router-link v-else :to="{name: 'LongText', 
                     params: { id: `sentence/${text.file}` }, 
                     hash: '#'}"
                     class="router-link">
-                      {{ v }}
+                      {{ text[k] }}
                     </router-link>
                   </template>
-                  <template v-else>{{ v }}</template>
+                  <template v-else>{{ text[k] }}</template>
                 </td>
               </template>
             </tr>
@@ -64,17 +64,6 @@
         </template>
       </v-simple-table>
     </v-card>
-
-    <v-btn
-      fab
-      small
-      fixed
-      top
-      right
-      color="primary mr-7 mt-9"
-      @click="dialog = false"
-      ><b>關閉</b></v-btn
-    >
   </v-dialog>
 </template>
 
@@ -106,6 +95,13 @@ export default {
         hash: "#",
       });
     },
+    filterMetaKeys: function(obj) {
+      // Sort table columns by predefined order in metaKeys
+      var arr2 = Object.keys(obj);
+      return this.metaKeys.filter(function(n) {
+        return arr2.indexOf(n) !== -1;
+      });
+    }
   },
   computed: {
     metaSorted: function() {
@@ -116,6 +112,7 @@ export default {
   data() {
     return {
       dialog: false,
+      metaKeys: ["type", "file", "collected", "topic", "iu_num", "sent_num", "record_time", "speaker"],
       metaMap: {
         file: { name: "檔案", icon: "mdi-paperclip" },
         topic: { name: "主題", icon: "mdi-book-open-page-variant" },
