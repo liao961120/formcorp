@@ -19,9 +19,12 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
 
+      <span style="position:fixed;left:1rem;top:1rem;color:grey">
+        {{ text.meta.video.split('.')[0] }}
+      </span>
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex"></v-spacer>
-        <v-col cols="6" class="d-none d-sm-flex justify-center grey--text text-darken-3 text-h6">
+        <v-col cols="5" class="d-none d-sm-flex justify-center grey--text text-darken-3 text-h6">
           <template>
             {{ text.meta.language.split(', ')[0] }}
           </template>
