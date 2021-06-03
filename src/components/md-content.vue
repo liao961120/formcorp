@@ -16,14 +16,24 @@ export default {
         return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
       // To Do: markdown content translations
       else
-        return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}.html.txt`;
+        return `https://yongfu.name/formcorp-content/${this.$route.name.toLowerCase()}-en.html.txt`;
     },
   },
-  created: function () {
-    this.$http.get(this.src).then(function (data) {
-      this.rawHTML = data.body;
-    });
+  methods: {
+    get_html_content() {
+      this.$http.get(this.src).then(function (data) {
+        this.rawHTML = data.body;
+      });
+    }
   },
+  created: function () {
+    this.get_html_content();
+  },
+  watch: {
+    src() {
+      this.get_html_content();
+    },
+  }
 };
 </script>
 
