@@ -93,7 +93,7 @@
           </v-btn>
 
           <v-btn
-            class="ml-4 mr-0 px-0 d-none d-sm-inline-block"
+            class="ml-4 mr-0 px-0 d-none d-md-inline-block"
             small
             fab
             dark
@@ -127,7 +127,7 @@
           v-model="docfilter"
           dense
           outlined
-          label="語言"
+          :label="$t('語言')"
           class="mt-2 mx-0"
         ></v-select>
       </span>
@@ -137,7 +137,7 @@
           value="1"
           :true-value="1"
           :false-value="0"
-          :label="query.regex == '1' ? '表達式' : '標準'"
+          :label="query.regex == '1' ? $t('表達式') : $t('標準')"
           inset
           dense
           color="success"
