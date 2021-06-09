@@ -3,10 +3,16 @@
       <template v-for="(content, lang) in data">
         <v-card :key="lang" class="mb-4" width="32%" min-width="210">
           <v-card-title>
-            <b>{{ langInfo[lang].name }}</b>
+              <b v-if="$i18n.locale == 'tw'">{{ langInfo[lang].name }}</b>
+              <b v-else>{{ lang.split("_")[0] }} ({{ lang.split("_")[1] }})</b>
           </v-card-title>
           <v-card-subtitle>
-            {{ lang.split("_")[0] }}
+            <template v-if="$i18n.locale == 'tw'">
+              {{ lang.split("_")[0] }} ({{ lang.split("_")[1] }}) 
+            </template>
+            <template v-else>
+              {{ langInfo[lang].name }}
+            </template>
           </v-card-subtitle>
 
           <v-img
