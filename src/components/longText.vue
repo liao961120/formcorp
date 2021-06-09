@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <audio controls controlsList="nodownload">
+      <source src="https://doc-0k-98-docs.googleusercontent.com/docs/securesc/31uo4cdm3o6m56no6uinveui51gu45rt/lffrrng8tlv388ormk41vkmo2cl4s9d4/1623245775000/08759115489420488499/18271699559676661294/19_Z0TAciVvfrJmHGE2gAErV_KhXJaQOq?e=open&authuser=0" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
     <div class="text">
       <template v-for="(res, i) in text.glosses">
         <Leipzig
@@ -61,12 +65,15 @@ export default {
       currGroupNum: false,
       lastSentEndNum: [],
       hash: this.$route.hash,
+      full_text_audio: "",
     };
   },
   methods: {
     getAudio: function () {
       this.$http.get(this.src).then(function (data) {
         this.text = data.body;
+        //this.full_text_audio = "https://yongfu.name/forcorpFulltextAudio/" + this.text.meta.video;
+        // ToDo: Google API to get url filename match
         this.lastSentEndNum = this.text.glosses
           .map((x) => [x[1].num, x[1].s_end])
           .filter((x) => x[1])
