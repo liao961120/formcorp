@@ -99,6 +99,7 @@ export default {
       audio_url: "https://yongfu.name/FormCorp-audio", // no slash at end
       plain_text_gloss: "",
       /* See https://yongfu.name/gloss-search/2020_Budai_Rukai/data.json for data format*/
+      curr_audio: new Audio(),
     };
   },
   computed: {
@@ -175,9 +176,10 @@ export default {
   },
   methods: {
     playAudio(url) {
-      var audio = new Audio(url);
-      audio.volume = 1.0;
-      audio.play();
+      this.curr_audio.pause();
+      this.curr_audio = new Audio(url);
+      this.curr_audio.volume = 1.0;
+      this.curr_audio.play();
     },
     get_audio_url_by_split_time(start_time, end_time, ori_audio) {
       const start =
