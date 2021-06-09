@@ -1,5 +1,5 @@
 <template>
-  <div v-scroll="handleScroll">
+  <div v-scroll="handleScroll" class="container">
     <div class="results" :key="search_results_key">
       <template v-for="(res, i) in vue_seach_results_lazy">
         <Leipzig
@@ -389,6 +389,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.container {
+  width: 100%;
+}
 .results {
   /* margin-top: 175px; */
   width: 100%;
