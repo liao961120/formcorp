@@ -76,11 +76,18 @@ export default {
       const h = Math.floor(seconds / 3600);
       const m = Math.floor((seconds % 3600) / 60);
       const s = Math.round(seconds % 60);
-      return [
-        h == 0 ? "" : `${h} 小時`,
-        `${m > 9 ? m : h ? "0" + m : m || "0"} 分`,
-        `${s > 9 ? s : "0" + s} 秒`,
-      ].join(" ");
+      if (this.$i18n.locale == 'tw')
+        return [
+          h == 0 ? "" : `${h} 小時`,
+          `${m > 9 ? m : h ? "0" + m : m || "0"} 分`,
+          `${s > 9 ? s : "0" + s} 秒`,
+        ].join(" ");
+      else
+        return [
+          h == 0 ? "" : `${h} hr`,
+          `${m > 9 ? m : h ? "0" + m : m || "0"} min`,
+          `${s > 9 ? s : "0" + s} sec`,
+        ].join(" ");
     },
     isValidDate: function (d_str) {
       if (typeof d_str !== 'string') return false
