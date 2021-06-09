@@ -39,8 +39,14 @@ const messages = {
     "電子郵件：": "Email: ",
     "電話：": "Phone: ",
     "傳真：": "Fax: ",
-    "臺灣大學語言學研究所": "Graduate Institute of Linguistics"
-    
+    "臺灣大學語言學研究所": "Graduate Institute of Linguistics",
+    // Text info (file table)
+    "檔案": "File",
+    "主題": "Topic",
+    "體例": "Type",
+    "發音人": "Speaker",
+    "採集日期": "Collected",
+    "轉寫者": "Transcribed",
   },
   tw: {
     hello: '哈囉世界',
@@ -69,6 +75,13 @@ const messages = {
     "電話：": "電話：",
     "傳真：": "傳真：",
     "臺灣大學語言學研究所": "臺灣大學語言學研究所",
+    // Text info (file table)
+    "檔案": "檔案",
+    "主題": "主題",
+    "體例": "體例",
+    "發音人": "發音人",
+    "採集日期": "採集日期",
+    "轉寫者": "轉寫者",
   }
 }
 // Create VueI18n instance with options

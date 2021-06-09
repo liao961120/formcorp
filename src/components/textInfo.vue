@@ -25,7 +25,7 @@
               <template v-for="k in filterMetaKeys(meta[0])">
                 <th class="text-left" :key="k">
                   <v-icon v-text="metaMap[k].icon"></v-icon>
-                  {{ metaMap[k].name }}
+                  {{ $t(metaMap[k].name) }}
                   
                 </th>
               </template>
