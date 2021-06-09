@@ -29,7 +29,7 @@ const messages = {
     // languages/
     "故事": "Story",
     "句子": "Sentence",
-    "語法書": "Book",
+    "語法書": "Grammar Book",
     "長度": "Recorded",
     "IU數": "IUs",
     "句數": "Sentences",

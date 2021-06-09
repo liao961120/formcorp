@@ -156,47 +156,43 @@ export default {
       database: "https://yongfu.name/glossParser/text-meta.json",
       langInfo: {
         Rukai_Vedai: {
-          name: "魯凱 (霧台)",
+          name: "魯凱語 (霧台)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=8&p=2",
           },
         Amis_Ciwkangan: {
-          name: "阿美 (長光)",
+          name: "阿美語 (長光)",
           bookURL: "",
           },
         "Saisiyat_Tong-he": {
-          name: "賽夏 (東河)",
+          name: "賽夏語 (東河)",
           bookURL: "",
           },
         Sakizaya_Sakizaya: {
-          name: "撒奇萊雅",
+          name: "撒奇萊雅語",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=14&p=2",
           },
         Kavalan_Xinshe: {
-          name: "噶瑪蘭 (新社)",
+          name: "噶瑪蘭語 (新社)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=10&p=2",
           },
         Atayal_Mayrinax: {
-          name: "泰雅 (汶水)",
+          name: "泰雅語 (汶水)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=2&p=2",
           },
         Seediq_Tgdaya: {
-          name: "賽德克 (Tgdaya)",
+          name: "賽德克語 (Tgdaya)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=5&p=2",
           },
-        Tsou_TapangU: {
-          name: "鄒語 (TapangU)",
-          bookURL: "",
-          },
-        Tsou_Tfya: {
-          name: "鄒語 (Tfya)",
+        Tsou_Tsou: {
+          name: "鄒語",
           bookURL: "",
           },
         Bunun_Isbukun: {
-          name: "布農 (Isbukun)",
+          name: "布農語 (Isbukun)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=6&p=2",
           },
         Kanakanavu_Kanakanavu: {
-          name: "卡那卡那富",
+          name: "卡那卡那富語",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=15&p=2",
           },
       },
