@@ -92,7 +92,7 @@ export default {
     isValidDate: function (d_str) {
       if (typeof d_str !== 'string') return false
       if (d_str.split('-').length != 3) return false
-      if (!d_str.split('-')[0].startsWith('2')) return false
+      if (!d_str.split('-')[0].startsWith('2') & !d_str.split('-')[0].startsWith('1')) return false
       return true
     },
     toLongText: function (lang, file) {
