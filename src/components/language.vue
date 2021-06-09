@@ -4,11 +4,15 @@
         <v-card :key="lang" class="mb-4" width="32%" min-width="210">
           <v-card-title>
               <b v-if="$i18n.locale == 'tw'">{{ langInfo[lang].name }}</b>
-              <b v-else>{{ lang.split("_")[0] }} ({{ lang.split("_")[1] }})</b>
+              <b v-else>
+                {{ lang.split("_")[0] }}
+                <template v-if="lang.split('_')[0] != lang.split('_')[1]">({{ lang.split("_")[1] }})</template>
+              </b>
           </v-card-title>
           <v-card-subtitle>
             <template v-if="$i18n.locale == 'tw'">
-              {{ lang.split("_")[0] }} ({{ lang.split("_")[1] }}) 
+              {{ lang.split("_")[0] }}
+              <template v-if="lang.split('_')[0] != lang.split('_')[1]">({{ lang.split("_")[1] }})</template>
             </template>
             <template v-else>
               {{ langInfo[lang].name }}
