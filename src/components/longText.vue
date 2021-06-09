@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="container">
     <div class="text">
       <template v-for="(res, i) in text.glosses">
         <Leipzig
@@ -87,6 +87,9 @@ export default {
   right: 0;
   top: 2%; */
   z-index: 100;
+}
+.container {
+  width: 100%;
 }
 .text {
   width: 100%;
