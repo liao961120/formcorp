@@ -16,6 +16,12 @@
     <v-card height="100%">
       <v-card-title fixed top class="headline grey lighten-2">
         <b>{{ title }}</b>
+        <v-spacer></v-spacer>
+        <v-card-actions>
+          <v-btn x-small fab flat color="deep-orange" @click="dialog = false">
+            <v-icon color="white">mdi-close</v-icon>
+          </v-btn>
+        </v-card-actions>
       </v-card-title>
 
       <v-simple-table dense fixed-header height="29em" class="pa-3">
