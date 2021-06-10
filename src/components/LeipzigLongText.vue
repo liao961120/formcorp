@@ -20,7 +20,7 @@
           <v-icon small color="blue lighten-2">mdi-volume-high</v-icon>
         </button>
       </template>
-
+      
       <div class="example gloss--glossed">
         <p
           v-if="gloss.ori.length > 0"
@@ -59,7 +59,7 @@
       </div>
     </div>
 
-    <div v-if="gloss.s_end & 'video' in gloss.meta" class="full-sent-audio">
+    <div v-if="gloss.s_end & 'video' in gloss.meta & gloss.meta.video != 'None'" class="full-sent-audio">
       <button
         class="sent-audio"
         title="例句發音"
