@@ -1,9 +1,5 @@
 <template>
   <div class="container">
-    <audio controls controlsList="nodownload">
-      <source src="https://doc-0k-98-docs.googleusercontent.com/docs/securesc/31uo4cdm3o6m56no6uinveui51gu45rt/lffrrng8tlv388ormk41vkmo2cl4s9d4/1623245775000/08759115489420488499/18271699559676661294/19_Z0TAciVvfrJmHGE2gAErV_KhXJaQOq?e=open&authuser=0" type="audio/mpeg">
-    Your browser does not support the audio element.
-    </audio>
     <div class="text">
       <template v-for="(res, i) in text.glosses">
         <Leipzig
@@ -22,6 +18,13 @@
       <!-- <v-btn @click.stop="drawer = !drawer" icon depressed style="background:#FFD180">
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
+      
+      <span style="position:fixed;left:1rem;top:0.95rem">
+        <audio controls controlsList="nodownload" style="width:280px;height:30px;">
+          <source :src="full_text_audio" type="audio/mpeg">
+          Your browser does not support the audio element.
+        </audio>
+      </span>
 
       <span style="position:fixed;right:1rem;top:1rem;color:grey">
         {{ `${filename.split('/').pop()}.txt` }}
@@ -72,7 +75,7 @@ export default {
     getAudio: function () {
       this.$http.get(this.src).then(function (data) {
         this.text = data.body;
-        //this.full_text_audio = "https://yongfu.name/forcorpFulltextAudio/" + this.text.meta.video;
+        this.full_text_audio = this.$audioMap[this.text.meta.video];
         // ToDo: Google API to get url filename match
         this.lastSentEndNum = this.text.glosses
           .map((x) => [x[1].num, x[1].s_end])

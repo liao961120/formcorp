@@ -7,10 +7,25 @@ import VModal from 'vue-js-modal'
 import VueI18n from 'vue-i18n'
 // import VueCryptojs from 'vue-cryptojs'
 
+function httpGetAudioMap()
+{   
+    const url = 'https://yongfu.name/formcorpFulltextAudio/map.json';
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          Vue.prototype.$audioMap = JSON.parse(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", url, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+
+
 // Vue.use(VueCryptojs)  // Encryption
 Vue.use(VueResource)  // http requests
 Vue.use(VModal)
 Vue.use(VueI18n)
+httpGetAudioMap();
+
 
 const messages = {
   en: {
