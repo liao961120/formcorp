@@ -2,7 +2,7 @@
   <div class="outer">
     <div class="IU">
       <span class="gloss-src src-num">{{ gloss.num }}</span>
-      <template v-if="'video' in gloss.meta">
+      <template v-if="'video' in gloss.meta & gloss.meta.video != 'None'">
         <button
           class="iu-audio"
           title="IU發音"

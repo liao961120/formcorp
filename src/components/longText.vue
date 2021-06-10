@@ -75,7 +75,7 @@ export default {
     getAudio: function () {
       this.$http.get(this.src).then(function (data) {
         this.text = data.body;
-        if ("video" in this.text.meta)
+        if ("video" in this.text.meta & this.text.meta.video != 'None')
           this.full_text_audio = this.$audioMap[this.text.meta.video];
         // ToDo: Google API to get url filename match
         this.lastSentEndNum = this.text.glosses
