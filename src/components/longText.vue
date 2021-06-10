@@ -19,7 +19,7 @@
         <v-icon>mdi-menu</v-icon>
       </v-btn> -->
       
-      <span style="position:fixed;left:1rem;top:0.95rem">
+      <span style="position:fixed;left:1rem;top:0.95rem" v-if="full_text_audio != ''">
         <audio controls controlsList="nodownload" style="width:280px;height:30px;">
           <source :src="full_text_audio" type="audio/mpeg">
           Your browser does not support the audio element.
@@ -75,7 +75,8 @@ export default {
     getAudio: function () {
       this.$http.get(this.src).then(function (data) {
         this.text = data.body;
-        this.full_text_audio = this.$audioMap[this.text.meta.video];
+        if ("video" in this.text.meta)
+          this.full_text_audio = this.$audioMap[this.text.meta.video];
         // ToDo: Google API to get url filename match
         this.lastSentEndNum = this.text.glosses
           .map((x) => [x[1].num, x[1].s_end])
