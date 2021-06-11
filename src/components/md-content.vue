@@ -64,6 +64,9 @@ export default {
     float: right;
     margin-left: 0.85em;
   }
+  .references {
+    margin-top: 1.2em;
+  }
   .references > .csl-entry {
     padding-left: 2.5em;
     text-indent: -2.5em;
