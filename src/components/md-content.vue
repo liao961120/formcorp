@@ -64,13 +64,6 @@ export default {
     float: right;
     margin-left: 0.85em;
   }
-  .references::before {
-    content: "相關文獻";
-    display: block;
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 1.8em 0 0.3em 0;
-  }
   .references > .csl-entry {
     padding-left: 2.5em;
     text-indent: -2.5em;
