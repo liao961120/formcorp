@@ -341,11 +341,6 @@ export default {
     });
   },
   watch: {
-    database: function () {
-      this.$http.get(this.database).then(function (data) {
-        this.results = data.body;
-      });
-    },
     "query.query": function () {
       this.forceReload();
       this.infscroll = 15;
