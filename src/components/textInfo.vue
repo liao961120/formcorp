@@ -45,7 +45,7 @@
                 </td>
                 <td v-else-if="k == 'collected'" :key="k + '0' + i">
                   <template v-if="isValidDate(text.collected)">{{ text.collected }}</template>
-                  <template v-else>?</template>
+                  <template v-else>None</template>
                 </td>
                 <td v-else :key="k + '0' + i">
                   <template v-if="k == 'file'">
