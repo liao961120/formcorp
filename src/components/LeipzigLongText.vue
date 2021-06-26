@@ -1,7 +1,7 @@
 <template>
   <div class="outer">
     <div class="IU">
-      <span class="gloss-src src-num">{{ gloss.num }}</span>
+      <span class="gloss-src src-num">{{ glossNum }}</span>
       <template v-if="'video' in gloss.meta & gloss.meta.video != 'None'">
         <button
           class="iu-audio"
@@ -74,12 +74,12 @@
           )
         "
       >
-        <v-icon dense color="white">mdi-volume-high</v-icon>
+        <v-icon dense color="white">mdi-volume-high {{ lastSentEndNum }}</v-icon>
 
-        <span v-if="lastSentEndNum2 + 1 != gloss.num">
-          {{ lastSentEndNum2 + 1 }} - {{ gloss.num }}
+        <span v-if="lastSentEndNum2 + 1 != glossNum">
+          {{ lastSentEndNum2 + 1 }} - {{ glossNum }}
         </span>
-        <span v-else>{{ gloss.num }}</span>
+        <span v-else>{{ glossNum }}</span>
       </button>
     </div>
   </div>
@@ -87,7 +87,7 @@
 
 <script>
 export default {
-  props: ["gloss", "lastSentEndNum"],
+  props: ["gloss", "glossNum", "lastSentEndNum"],
   data() {
     return {
       audio_url: "https://yongfu.name/FormCorp-audio", // no slash at end
@@ -97,7 +97,7 @@ export default {
   },
   computed: {
       lastSentEndNum2: function() {
-          var idx = this.lastSentEndNum.indexOf(this.gloss.num);
+          var idx = this.lastSentEndNum.indexOf(this.glossNum);
           return this.lastSentEndNum[idx-1]
       }
   },

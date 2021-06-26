@@ -4,9 +4,9 @@
       <template v-for="(res, i) in text.glosses">
         <Leipzig
           v-bind:gloss="res[1]"
+          v-bind:glossNum="res[0]"
           v-bind:lastSentEndNum="lastSentEndNum"
           :key="i"
-          :id="res[1].num"
           :class="[{ tohash: hash == `#${res[1].num}` }]"
         />
       </template>
@@ -79,7 +79,7 @@ export default {
           this.full_text_audio = this.$audioMap[this.text.meta.video];
         // ToDo: Google API to get url filename match
         this.lastSentEndNum = this.text.glosses
-          .map((x) => [x[1].num, x[1].s_end])
+          .map((x) => [x[0], x[1].s_end])
           .filter((x) => x[1])
           .map((x) => x[0]);
         this.lastSentEndNum.unshift(0);
