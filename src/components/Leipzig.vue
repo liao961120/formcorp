@@ -72,7 +72,8 @@
             <span v-html="tup[1]"></span>
           </p>
           <p class="gloss__line gloss__line--3">
-            <span v-html="tup[2]"></span>
+            <span v-if="tup[2] == '_'"></span>
+            <span v-else v-html="tup[2]"></span>
           </p>
         </div>
       </div>

@@ -2,7 +2,12 @@
   <div class="outer">
     <div class="IU">
       <span class="gloss-src src-num">{{ glossNum }}</span>
-      <template v-if="'video' in gloss.meta & gloss.meta.video != 'None'">
+      <template v-if="'audio_url' in gloss">
+        <button class="iu-audio" title="IU發音" v-on:click="playAudio(gloss.audio_url)">
+          <v-icon small color="blue lighten-2">mdi-volume-high</v-icon>
+        </button>
+      </template>
+      <template v-else-if="('video' in gloss.meta) & (gloss.meta.video != 'None')">
         <button
           class="iu-audio"
           title="IU發音"
@@ -20,7 +25,7 @@
           <v-icon small color="blue lighten-2">mdi-volume-high</v-icon>
         </button>
       </template>
-      
+
       <div class="example gloss--glossed">
         <p
           v-if="gloss.ori.length > 0"
@@ -43,7 +48,7 @@
               <span>{{ tup[1] }}</span>
             </p>
             <p class="gloss__line gloss__line--3">
-              <span>{{ tup[2] }}</span>
+              <span>{{ tup[2] == '_' ? '' : tup[2]  }}</span>
             </p>
           </div>
         </div>
@@ -59,7 +64,12 @@
       </div>
     </div>
 
-    <div v-if="gloss.s_end & 'video' in gloss.meta & gloss.meta.video != 'None'" class="full-sent-audio">
+    <div
+      v-if="
+        gloss.s_end & ('video' in gloss.meta) & (gloss.meta.video != 'None')
+      "
+      class="full-sent-audio"
+    >
       <button
         class="sent-audio"
         title="例句發音"
@@ -74,7 +84,9 @@
           )
         "
       >
-        <v-icon dense color="white">mdi-volume-high {{ lastSentEndNum }}</v-icon>
+        <v-icon dense color="white"
+          >mdi-volume-high {{ lastSentEndNum }}</v-icon
+        >
 
         <span v-if="lastSentEndNum2 + 1 != glossNum">
           {{ lastSentEndNum2 + 1 }} - {{ glossNum }}
@@ -96,10 +108,10 @@ export default {
     };
   },
   computed: {
-      lastSentEndNum2: function() {
-          var idx = this.lastSentEndNum.indexOf(this.glossNum);
-          return this.lastSentEndNum[idx-1]
-      }
+    lastSentEndNum2: function () {
+      var idx = this.lastSentEndNum.indexOf(this.glossNum);
+      return this.lastSentEndNum[idx - 1];
+    },
   },
   methods: {
     playAudio(url) {
