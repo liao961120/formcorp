@@ -102,13 +102,20 @@
               :title="$t('故事')"
               :texttype="'Story'"
               :btnColor="'info'"
-              :meta="content.text.filter((elem) => elem.type != 'Sentence')"
+              :meta="content.text.filter((elem) => elem.type != 'Sentence' & elem.type != 'GrammarBook')"
               :language="lang"
             ></TextInfo>
 
             <span class="mx-2"></span>
 
-            <v-btn 
+            <TextInfo
+              :title="$t('語法書')"
+              :texttype="'GrammarBook'"
+              :btnColor="'warning lighten-1'"
+              :meta="content.text.filter((elem) => elem.type == 'GrammarBook')"
+              :language="lang"
+            ></TextInfo>
+            <!-- <v-btn 
               small
               color="warning lighten-1`"
               :href="langInfo[lang].bookURL"
@@ -118,6 +125,7 @@
             >
               <b>{{ $t('語法書') }}</b>
             </v-btn>
+             -->
           </div>
         </v-card>
       </template>

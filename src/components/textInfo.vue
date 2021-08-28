@@ -55,8 +55,14 @@
                     class="router-link">
                       {{ text[k] }}
                     </router-link>
-                    <router-link v-else :to="{name: 'LongText', 
+                    <router-link v-else-if="texttype == 'Sentence'" :to="{name: 'LongText', 
                     params: { id: `sentence/${text.file}` }, 
+                    hash: '#'}"
+                    class="router-link">
+                      {{ text[k] }}
+                    </router-link>
+                    <router-link v-else-if="texttype == 'GrammarBook'" :to="{name: 'LongText', 
+                    params: { id: `grammar/${text.file}` }, 
                     hash: '#'}"
                     class="router-link">
                       {{ text[k] }}
