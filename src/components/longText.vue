@@ -7,7 +7,8 @@
           v-bind:glossNum="res[0]"
           v-bind:lastSentEndNum="lastSentEndNum"
           :key="i"
-          :class="[{ tohash: hash == `#${res[1].num}` }]"
+          :class="[{ tohash: hash == `#${res[0]}` }]"
+          :id="res[0]"
         />
       </template>
     </div>
@@ -32,7 +33,7 @@
       <v-row justify="center" align="center">
         <v-spacer class="d-none d-md-flex"></v-spacer>
         <v-col cols="5" class="d-none d-sm-flex justify-center grey--text text-darken-3 text-h6">
-          <template>
+          <template v-if="'meta' in text">
             {{ text.meta.language.split(', ')[0] }}
           </template>
           <DocMeta v-bind:meta="text.meta"></DocMeta>

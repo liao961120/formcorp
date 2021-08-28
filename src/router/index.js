@@ -43,7 +43,7 @@ const router = new VueRouter({
   scrollBehavior (to, from, savedPosition) {
     if (to.hash == '#') return {x:0, y:0}
     else if (to.hash) {
-      console.log(to.hash)
+      // console.log('HASH: ', to.hash)
       return new Promise((resolve) => {
         setTimeout(() => {
           resolve({ selector: to.hash, offset: { x: 0, y: 80 }})
