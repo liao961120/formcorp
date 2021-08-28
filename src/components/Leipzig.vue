@@ -1,7 +1,12 @@
 <template>
   <div>
     <span class="gloss-src src-num">{{ gloss.num }}</span>
-    <template v-if="'video' in gloss.meta & gloss.meta.video != 'None'">
+    <template v-if="'audio_url' in gloss">
+      <button class="iu-audio" title="IU發音" v-on:click="playAudio(gloss.audio_url)">
+        <v-icon small color="blue lighten-2">mdi-volume-high</v-icon>
+      </button>
+    </template>
+    <template v-else-if="'video' in gloss.meta & gloss.meta.video != 'None'">
       <button
         class="iu-audio"
         title="IU發音"
