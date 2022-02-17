@@ -48,7 +48,7 @@
                     {{ normalizeDate(text.collected) }}
                   </template>
                   <template v-else-if="isValidDate(text.revised)">
-                    {{ normalizeDate(text.revised) }}<sub style="color:grey">(R)</sub>
+                    {{ normalizeDate(text.revised) }}<sub style="color:grey"> (R)</sub>
                   </template>
                   <template v-else>None</template>
                 </td>
