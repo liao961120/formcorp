@@ -49,3 +49,15 @@ function normToken(x, ignoreCharSet, proxyCharSet) {
         x = x.replaceAll(proxyCharSet[i][0], proxyCharSet[i][1]); 
     return x.toLowerCase()
 }
+
+
+// Date Normalize
+export class DateUtil {
+    static normalize(str) {
+        if (str.match(/\d{4}-\d{1,2}-\d{1,2}/)) {
+            str = str.split('-')
+            return `${str[0]}-${str[1].padStart(2, '0')}-${str[2].padStart(2, '0')}`
+        }
+        return str
+    }
+}
