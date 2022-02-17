@@ -21,9 +21,13 @@ export default {
   },
   methods: {
     get_html_content() {
-      this.$http.get(this.src).then(function (data) {
-        this.rawHTML = data.body;
-      });
+      var rt = this.$route.name.toLowerCase();
+      if (rt == 'external_links' | rt == 'about') {
+        this.$http.get(this.src).then(function (data) {
+          this.rawHTML = data.body;
+        });
+      }
+      
     }
   },
   created: function () {
