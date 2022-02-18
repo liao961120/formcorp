@@ -15,7 +15,7 @@ export class Highlight {
                 }
             }
 
-            // Exact search
+        // Exact search
         } else {
             for (var j = 0; j < query_arr.length; j++) {
                 var norm_tk = normToken(tk, ignoreCharSet, proxyCharSet);
