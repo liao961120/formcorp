@@ -20,6 +20,7 @@
           >
         </v-list-item-content>
       </v-list-item>
+
       <v-divider></v-divider>
 
       <v-list-item  link router to="/" active-class="deep-orange--text">
@@ -49,6 +50,38 @@
         </v-list-item-content>
       </v-list-item>
 
+      <v-divider></v-divider>
+      <!-- <v-subheader class="pb-0 mb-0">{{ $t('語料說明') }}</v-subheader> -->
+
+      <v-list-item link router to="/writingsystem/" active-class="deep-orange--text">
+        <v-list-item-action>
+          <v-icon>mdi-magnify</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{ $t('書寫系統') }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item link router to="/coding/" active-class="deep-orange--text">
+        <v-list-item-action>
+          <v-icon>mdi-magnify</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{ $t('標記說明') }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-list-item link router to="/stories/" active-class="deep-orange--text">
+        <v-list-item-action>
+          <v-icon>mdi-magnify</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{ $t('故事簡介') }}</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
       <v-list-item link router to="/resources/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-link-variant</v-icon>
@@ -58,16 +91,6 @@
         </v-list-item-content>
       </v-list-item>
 
-      <v-list-item @click="locale_tw = !locale_tw">
-        <v-list-item-action>
-          <v-icon>mdi-translate</v-icon>
-        </v-list-item-action>
-        <v-list-item-content>
-          <v-list-item-title>{{ locale_tw ? 'English' : '繁體中文' }}</v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
-
-      <v-divider></v-divider>
       <!-- <v-subheader class="pb-0 mb-0 text-caption">外部連結</v-subheader> -->
 
       <!-- <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank">
@@ -79,7 +102,16 @@
         </v-list-item-content>
       </v-list-item> -->
 
-      <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank" class="px-3">
+    <v-list-item @click="locale_tw = !locale_tw">
+        <v-list-item-action>
+          <v-icon>mdi-translate</v-icon>
+        </v-list-item-action>
+        <v-list-item-content>
+          <v-list-item-title>{{ locale_tw ? 'English' : '繁體中文' }}</v-list-item-title>
+        </v-list-item-content>
+    </v-list-item>
+    
+    <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank" class="px-3">
         <v-list-item-action class="mr-2">
           <v-list-item-avatar>
             <img
@@ -94,43 +126,8 @@
       </v-list-item>
     </v-list>
 
+
     <!-- Footer -->
-    <v-footer fixed color="" height="37.5">
-      <v-row class="mt-n4">
-        <v-col cols="4">
-          <v-btn
-            icon
-            color="light-green darken-2"
-            href=""
-            target="_blank"
-          >
-            <v-icon></v-icon>
-          </v-btn>
-        </v-col>
-
-        <v-col cols="4">
-          <v-btn
-            icon
-            color="deep-orange lighten-2"
-            href=""
-            target="_blank"
-          >
-            <v-icon></v-icon>
-          </v-btn>
-        </v-col>
-
-        <v-col cols="4">
-          <v-btn icon href="" target="" color="">
-            <!-- <v-avatar size="22">
-              <img
-                src=""
-                alt=""
-              />
-            </v-avatar> -->
-          </v-btn>
-        </v-col>
-      </v-row>
-    </v-footer>
   </v-navigation-drawer>
 </template>
 

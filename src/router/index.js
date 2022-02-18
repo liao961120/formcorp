@@ -34,7 +34,22 @@ Vue.use(VueRouter)
     path: '/language/',
     name: 'Language',
     component: () => import('../components/language.vue')
-  }
+  },
+  {
+    path: '/coding/',
+    name: 'coding',
+    component: () => import('../components/md-content.vue')
+  },
+  {
+    path: '/writingsystem/',
+    name: 'writingsystem',
+    component: () => import('../components/md-content.vue')
+  },
+  {
+    path: '/stories/',
+    name: 'stories',
+    component: () => import('../components/md-content.vue')
+  },
 ]
 
 const router = new VueRouter({

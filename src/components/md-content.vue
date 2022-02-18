@@ -22,7 +22,11 @@ export default {
   methods: {
     get_html_content() {
       var rt = this.$route.name.toLowerCase();
-      if (rt == 'external_links' | rt == 'about') {
+      if (
+        'external_links about coding writingsystem stories'
+        .split(" ")
+        .some( (elem) => elem == rt)
+        ) {
         this.$http.get(this.src).then(function (data) {
           this.rawHTML = data.body;
         });
