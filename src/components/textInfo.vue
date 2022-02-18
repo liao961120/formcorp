@@ -18,7 +18,7 @@
         <b>{{ title }}</b>
         <v-spacer></v-spacer>
         <v-card-actions>
-          <v-btn x-small fab flat color="deep-orange" @click="dialog = false">
+          <v-btn x-small fab text color="deep-orange" @click="dialog = false">
             <v-icon color="white">mdi-close</v-icon>
           </v-btn>
         </v-card-actions>
@@ -44,7 +44,12 @@
                   {{ formatTime(text.record_time) }}
                 </td>
                 <td v-else-if="k == 'collected'" :key="k + '0' + i">
-                  <template v-if="isValidDate(text.collected)">{{ text.collected }}</template>
+                  <template v-if="isValidDate(text.collected)">
+                    {{ normalizeDate(text.collected) }}
+                  </template>
+                  <template v-else-if="isValidDate(text.revised)">
+                    {{ normalizeDate(text.revised) }}<sub style="color:grey"> (R)</sub>
+                  </template>
                   <template v-else>None</template>
                 </td>
                 <td v-else :key="k + '0' + i">
@@ -81,6 +86,8 @@
 
 
 <script>
+import { DateUtil } from "@/helpers.js";
+
 export default {
   props: ["meta", "language", "title", "btnColor", "texttype"],
   methods: {
@@ -100,6 +107,9 @@ export default {
           `${m > 9 ? m : h ? "0" + m : m || "0"} min`,
           `${s > 9 ? s : "0" + s} sec`,
         ].join(" ");
+    },
+    normalizeDate: function(d_str) {
+      return DateUtil.normalize(d_str)
     },
     isValidDate: function (d_str) {
       if (typeof d_str !== 'string') return false
