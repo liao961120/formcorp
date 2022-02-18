@@ -41,7 +41,7 @@ const messages = {
     "語料搜尋": "Search Corpus",
     "相關資源": "Other Resources",
     "台大語言所": "NTU GIL",
-    "語料說明": "Info",
+    "語料說明": "Data Info",
     "書寫系統": "Writing System",
     "標記說明": "Coding",
     "青蛙的故事": "Frog Story",

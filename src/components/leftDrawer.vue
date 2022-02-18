@@ -2,7 +2,7 @@
   <v-navigation-drawer width="268" app permanent expand-on-hover fixed
   mini-variant-width=66>
     <v-list dense>
-      <v-list-item two-line class="px-2">
+      <v-list-item two-line class="px-2 no-active" link router to="/">
         <v-list-item-avatar>
           <img 
             class=""
@@ -23,14 +23,14 @@
 
       <v-divider></v-divider>
 
-      <v-list-item  link router to="/" active-class="deep-orange--text">
+      <!-- <v-list-item link router to="/" active-class="deep-orange--text">
         <v-list-item-action>
           <v-icon>mdi-information-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>{{ $t('關於我們') }}</v-list-item-title>
         </v-list-item-content>
-      </v-list-item>
+      </v-list-item> -->
 
       <v-list-item link router to="/language/" active-class="deep-orange--text">
         <v-list-item-action>
@@ -51,11 +51,11 @@
       </v-list-item>
 
       <v-divider></v-divider>
-      <!-- <v-subheader class="pb-0 mb-0">{{ $t('語料說明') }}</v-subheader> -->
+      <v-subheader class="pb-0 mb-0">{{ $t('語料說明') }}</v-subheader>
 
       <v-list-item link router to="/writingsystem/" active-class="deep-orange--text">
         <v-list-item-action>
-          <v-icon>mdi-magnify</v-icon>
+          <v-icon>mdi-note-edit-outline</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>{{ $t('書寫系統') }}</v-list-item-title>
@@ -64,7 +64,7 @@
 
       <v-list-item link router to="/coding/" active-class="deep-orange--text">
         <v-list-item-action>
-          <v-icon>mdi-magnify</v-icon>
+          <v-icon>mdi-format-annotation-plus</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>{{ $t('標記說明') }}</v-list-item-title>
@@ -73,14 +73,12 @@
 
       <v-list-item link router to="/stories/" active-class="deep-orange--text">
         <v-list-item-action>
-          <v-icon>mdi-magnify</v-icon>
+          <v-icon>mdi-information-variant</v-icon>
         </v-list-item-action>
         <v-list-item-content>
           <v-list-item-title>{{ $t('故事簡介') }}</v-list-item-title>
         </v-list-item-content>
       </v-list-item>
-
-      <v-divider></v-divider>
 
       <v-list-item link router to="/resources/" active-class="deep-orange--text">
         <v-list-item-action>
@@ -102,6 +100,8 @@
         </v-list-item-content>
       </v-list-item> -->
 
+    <v-divider></v-divider>
+
     <v-list-item @click="locale_tw = !locale_tw">
         <v-list-item-action>
           <v-icon>mdi-translate</v-icon>
@@ -110,6 +110,8 @@
           <v-list-item-title>{{ locale_tw ? 'English' : '繁體中文' }}</v-list-item-title>
         </v-list-item-content>
     </v-list-item>
+
+    <v-divider></v-divider>
     
     <v-list-item href="https://linguistics.ntu.edu.tw/" target="_blank" class="px-3">
         <v-list-item-action class="mr-2">
@@ -158,4 +160,7 @@ export default {
 </script>
 
 <style scoped>
+.no-active::before {
+  opacity: 0 !important;
+}
 </style>
