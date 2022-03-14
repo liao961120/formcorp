@@ -33,6 +33,7 @@ const messages = {
     "搜尋字串": "Search",
     "語言": "Language",
     "搜尋範圍": "Target",
+    "語料來源": "Source",
     "表達式": "RegEx",
     "標準": "STD",
     // Sidebar
@@ -74,6 +75,7 @@ const messages = {
     "搜尋字串": "搜尋字串",
     "語言": "語言",
     "搜尋範圍": "搜尋範圍",
+    "語料來源": "語料來源",
     "表達式": "表達式",
     "標準": "標準",
     // Sidebar

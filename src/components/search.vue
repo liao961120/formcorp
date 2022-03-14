@@ -42,14 +42,29 @@
           <v-select
             :items="
               this.$i18n.locale == 'tw'
-                ? docfilterSelect.tw
-                : docfilterSelect.en
+                ? docfilterSelect1.tw
+                : docfilterSelect1.en
             "
-            v-model="docfilter"
+            v-model="docfilter1"
             dense
             class="mt-6 px-0"
             outlined
             :label="$t('語言')"
+          ></v-select>
+        </v-col>
+
+        <v-col cols="2" class="d-none d-md-flex">
+          <v-select
+            :items="
+              this.$i18n.locale == 'tw'
+                ? docfilterSelect2.tw
+                : docfilterSelect2.en
+            "
+            v-model="docfilter2"
+            dense
+            class="mt-6 px-0"
+            outlined
+            :label="$t('語料來源')"
           ></v-select>
         </v-col>
 
@@ -121,10 +136,10 @@
         <v-select
           :items="
               this.$i18n.locale == 'tw'
-                ? docfilterSelect.tw
-                : docfilterSelect.en
+                ? docfilterSelect1.tw
+                : docfilterSelect1.en
             "
-          v-model="docfilter"
+          v-model="docfilter1"
           dense
           outlined
           :label="$t('語言')"
@@ -198,10 +213,10 @@ export default {
         regex: this.$route.query.regex ? this.$route.query.regex : 0,
         type: this.$route.query.type ? this.$route.query.type : "gloss",
       },
-      docfilter: this.$route.query.filter
-        ? this.$route.query.filter
+      docfilter1: this.$route.query.filter1
+        ? this.$route.query.filter1
         : "Amis_Ciwkangan",
-      docfilterSelect: {
+      docfilterSelect1: {
         tw: [
           { text: "阿美 (長光)", value: "Amis_Ciwkangan" },
           { text: "噶瑪蘭 (新社)", value: "Kavalan_Xinshe" },
@@ -229,6 +244,23 @@ export default {
           { text: "All", value: "" },
         ],
       },
+      docfilter2: this.$route.query.filter2
+        ? this.$route.query.filter2
+        : "",
+      docfilterSelect2: {
+        tw: [
+          { text: "故事", value: "story" },
+          { text: "句子", value: "sentence" },
+          { text: "語法書", value: "grammar" },
+          { text: "全部", value: "" },
+        ],
+        en: [
+          { text: "Story", value: "story" },
+          { text: "Sentence", value: "sentence" },
+          { text: "GrammarBook", value: "grammar" },
+          { text: "All", value: "" },
+        ],
+      },
       infscroll: 15,
       ignoreCharSet: ",_/^’\\-='<>.:()".split(""),
       proxyCharSet: [["ʉ", "u", "x"]],
@@ -242,6 +274,11 @@ export default {
       set(v) {
         this.query.query = v;
       },
+    },
+    docfilter: function() {
+      const filt = `${this.docfilter2}/${this.docfilter1}`;
+      if (filt == "/") return ""
+      return filt
     },
     filtered_results: function () {
       if (this.docfilter == "") return this.results;
@@ -329,10 +366,11 @@ export default {
         q: encodeURIComponent(this.query.query),
         r: encodeURIComponent(this.query.regex),
         t: encodeURIComponent(this.query.type),
-        f: encodeURIComponent(this.docfilter),
+        f1: encodeURIComponent(this.docfilter1),
+        f2: encodeURIComponent(this.docfilter2),
       };
       document.execCommand("copy");
-      return `${baseURL}#${this.$route.path}?query=${p.q}&regex=${p.r}&type=${p.t}&filter=${p.f}`;
+      return `${baseURL}#${this.$route.path}?query=${p.q}&regex=${p.r}&type=${p.t}&filter1=${p.f1}&filter2=${p.f2}`;
     },
   },
   created: function () {
