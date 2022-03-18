@@ -132,7 +132,7 @@
       color="blue-grey lighten-4"
       class="d-flex d-md-none"
     >
-      <span class="ml-0 mr-3" style="width: 33%">
+      <span class="mx-1" style="width: 30%">
         <v-select
           :items="
               this.$i18n.locale == 'tw'
@@ -146,6 +146,22 @@
           class="mt-2 mx-0"
         ></v-select>
       </span>
+
+      <span class="ml-0 mr-3" style="width: 30%">
+        <v-select
+          :items="
+            this.$i18n.locale == 'tw'
+              ? docfilterSelect2.tw
+              : docfilterSelect2.en
+          "
+          v-model="docfilter2"
+          dense
+          class="mt-2 mx-0"
+          outlined
+          :label="$t('語料來源')"
+        ></v-select>
+      </span>
+
       <span class="mx-0" style="width: 29%">
         <v-switch
           v-model="query.regex"
@@ -161,7 +177,7 @@
       </span>
       <v-btn
         style="width: 15%"
-        class="mx-0 px-0"
+        class="mx-0 pr-0"
         @click="copyShareURL"
         title="Copy share URL"
       >

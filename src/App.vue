@@ -11,7 +11,8 @@
     </v-main>
 
     <!-- Scroll to Top/Bottom -->
-    <v-speed-dial v-model="nav" fixed bottom right style="z-index: 1000">
+    <v-speed-dial v-model="nav" fixed bottom right style="z-index: 1000"
+    class="d-none d-xl-flex d-lg-flex d-md-flex d-sm-none d-xs-none">
       <template v-slot:activator>
         <v-btn v-model="nav" color="blue-grey" dark fab x-small>
           <v-icon v-if="nav">mdi-close</v-icon>
