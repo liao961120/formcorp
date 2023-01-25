@@ -110,6 +110,7 @@
 
             <TextInfo
               :title="$t('語法書')"
+              :reference="langInfo[lang].ref"
               :texttype="'GrammarBook'"
               :btnColor="'warning darken-1'"
               :meta="content.text.filter((elem) => elem.type == 'GrammarBook')"
@@ -176,42 +177,52 @@ export default {
         Rukai_Vedai: {
           name: "魯凱語 (霧台)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=8&p=2",
+          ref: "",
           },
         Amis_Ciwkangan: {
           name: "阿美語 (長光)",
           bookURL: "",
+          ref: "",
           },
         "Saisiyat_Tong-he": {
           name: "賽夏語 (東河)",
           bookURL: "",
+          ref: "",
           },
         Sakizaya_Sakizaya: {
           name: "撒奇萊雅語",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=14&p=2",
+          ref: "沈文琦。2016。《卡那卡那富語語法概論》，台灣南島語言叢書12。原住民族委員會，台北。",
           },
         Kavalan_Xinshe: {
           name: "噶瑪蘭語 (新社)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=10&p=2",
+          ref: "",
           },
         Atayal_Mayrinax: {
           name: "泰雅語 (汶水)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=2&p=2",
+          ref: "",
           },
         Seediq_Tgdaya: {
           name: "賽德克語 (Tgdaya)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=5&p=2",
+          ref: "宋麗梅。2018。《賽德克語語法概論》，台灣南島語言叢書5。原住民族委員會，台北。",
           },
         Tsou_Tsou: {
           name: "鄒語",
           bookURL: "",
+          ref: "",
           },
         Bunun_Isbukun: {
           name: "布農語 (Isbukun)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=6&p=2",
+          ref: "",
           },
         Kanakanavu_Kanakanavu: {
           name: "卡那卡那富語",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=15&p=2",
+          ref: "宋麗梅。2018。《卡那卡那富語語法概論》，台灣南島語言叢書16。原住民族委員會，台北。",
           },
       },
     };

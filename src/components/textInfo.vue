@@ -15,7 +15,10 @@
 
     <v-card height="100%">
       <v-card-title fixed top class="headline grey lighten-2">
-        <b>{{ title }}</b>
+        <div>
+          <span class="font-weight-bold">{{ title }}</span>
+          <p class="text-caption mt-1 mb-0 py-0 grey--text text--darken-3">{{ reference }} </p>
+        </div>
         <v-spacer></v-spacer>
         <v-card-actions>
           <v-btn x-small fab text color="deep-orange" @click="dialog = false">
@@ -96,7 +99,7 @@
 import { DateUtil } from "@/helpers.js";
 
 export default {
-  props: ["meta", "language", "title", "btnColor", "texttype"],
+  props: ["meta", "language", "title", "btnColor", "texttype", "reference"],
   methods: {
     suffixGrammarBookCh3: function() {
       if (this.$i18n.locale != 'tw') 
