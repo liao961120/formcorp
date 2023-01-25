@@ -87,16 +87,16 @@
             </v-hover>
           </v-img>
 
-          <div class="my-3 text-center">
+          <div class="my-2 text-center">
             <TextInfo
               :title="$t('句子')"
               :texttype="'Sentence'"
-              :btnColor="'deep-orange'"
+              :btnColor="'deep-orange darken-1'"
               :meta="content.text.filter((elem) => elem.type == 'Sentence')"
               :language="lang"
             ></TextInfo>
             
-            <span class="mx-2"></span>
+            <span class="mx-1"></span>
 
             <TextInfo
               :title="$t('故事')"
@@ -106,13 +106,23 @@
               :language="lang"
             ></TextInfo>
 
-            <span class="mx-2"></span>
+            <span class="mx-1"></span>
 
             <TextInfo
               :title="$t('語法書')"
               :texttype="'GrammarBook'"
-              :btnColor="'warning lighten-1'"
+              :btnColor="'warning darken-1'"
               :meta="content.text.filter((elem) => elem.type == 'GrammarBook')"
+              :language="lang"
+            ></TextInfo>
+
+            <span class="mx-1"></span>
+
+            <TextInfo
+              :title="$t('詞類專書')"
+              :texttype="'WordClass'"
+              :btnColor="'lime darken-4'"
+              :meta="content.text.filter((elem) => elem.type == 'WordClass')"
               :language="lang"
             ></TextInfo>
             <!-- <v-btn 

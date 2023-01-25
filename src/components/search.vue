@@ -444,12 +444,14 @@ export default {
   width: 100%;
   text-align: left;
   font-size: 1.1em;
+  counter-reset: resultseq;
 }
 
 .results > div {
   padding: 0.5em;
   border-radius: 10px;
   margin-bottom: 1em;
+  counter-increment: resultseq;
 }
 
 .results > div:nth-child(2n + 1) {
@@ -466,5 +468,16 @@ export default {
 .results > div:nth-child(2n):hover {
   background: rgba(230, 230, 230, 0.171);
   border: solid 2px rgba(197, 197, 197, 0.63);
+}
+/* Auto rownumber for search results */
+.results > div::before {
+  display: inline-block;
+  content: counter(resultseq)")";
+  width: 3.5em;
+  margin-left: -3.5em;
+  padding-right: 1.3em;
+  font-size: .7em;
+  color: rgb(104, 104, 104);
+  text-align: right;
 }
 </style>

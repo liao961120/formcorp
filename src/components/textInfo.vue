@@ -2,7 +2,7 @@
   <v-dialog v-model="dialog" width="100%">
     <template v-slot:activator="{ on, attrs }">
       <v-btn
-        small
+        x-small
         :color="`${btnColor} lighten-1`"
         :dark="meta.length > 0"
         :disabled="meta.length == 0"
@@ -28,29 +28,31 @@
         <template v-slot:default>
           <thead>
             <tr>
+                <th><!-- th for rownum --></th>
               <template v-for="k in filterMetaKeys(meta[0])">
                 <th class="text-left" :key="k">
                   <v-icon v-text="metaMap[k].icon"></v-icon>
                   {{ $t(metaMap[k].name) }}
-                  
                 </th>
               </template>
             </tr>
           </thead>
           <tbody>
             <tr v-for="(text, i) in metaSorted" :key="i + '0'" class="text-caption">
+                <!--  row number -->
+                <td class="grey--text text--darken-1 text-right">{{ i + 1 }}</td> 
               <template v-for="k in filterMetaKeys(text)">
-                <td v-if="k == 'record_time'" :key="k + '0' + i">
+                <td v-if="k == 'record_time'" :key="k + '0' + i" class="text-caption">
                   {{ formatTime(text.record_time) }}
                 </td>
-                <td v-else-if="k == 'collected'" :key="k + '0' + i">
+                <td v-else-if="k == 'collected'" :key="k + '0' + i" class="text-caption">
                   <template v-if="isValidDate(text.collected)">
                     {{ normalizeDate(text.collected) }}
                   </template>
                   <template v-else-if="isValidDate(text.revised)">
                     {{ normalizeDate(text.revised) }}<sub style="color:grey"> (R)</sub>
                   </template>
-                  <template v-else>None</template>
+                  <template v-else>---</template>
                 </td>
                 <td v-else :key="k + '0' + i">
                   <template v-if="k == 'file'">
@@ -70,8 +72,13 @@
                     params: { id: `grammar/${text.file}` }, 
                     hash: '#'}"
                     class="router-link">
+                      <!-- {{ formatGrammarBookCh3(text[k]) }} -->
                       {{ text[k] }}
                     </router-link>
+                    <span v-if="texttype == 'GrammarBook' && text.file.endsWith('/03')"
+                      class="grey--text text--darken-1 text-caption pl-1 mx-0">
+                      {{ suffixGrammarBookCh3() }}
+                    </span>
                   </template>
                   <template v-else>{{ text[k] }}</template>
                 </td>
@@ -91,6 +98,12 @@ import { DateUtil } from "@/helpers.js";
 export default {
   props: ["meta", "language", "title", "btnColor", "texttype"],
   methods: {
+    suffixGrammarBookCh3: function() {
+      if (this.$i18n.locale != 'tw') 
+        return `(no audio file)`
+      else 
+        return `(此章無音檔)`
+    },
     formatTime: function (seconds) {
       const h = Math.floor(seconds / 3600);
       const m = Math.floor((seconds % 3600) / 60);
