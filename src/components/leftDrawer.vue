@@ -16,7 +16,7 @@
             Formosan Languages</v-list-item-title
           >
           <v-list-item-subtitle class="text-overline"
-            >台大台灣南島語料庫</v-list-item-subtitle
+            >台大台灣南島語語料庫</v-list-item-subtitle
           >
         </v-list-item-content>
       </v-list-item>
