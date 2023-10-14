@@ -192,7 +192,7 @@ export default {
         Sakizaya_Sakizaya: {
           name: "撒奇萊雅語",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=14&p=2",
-          ref: "沈文琦。2016。《卡那卡那富語語法概論》，台灣南島語言叢書12。原住民族委員會，台北。",
+          ref: "沈文琦。2018。《撒奇萊雅語語法概論》，台灣南島語言叢書12。新北市：原住民族委員會。",
           },
         Kavalan_Xinshe: {
           name: "噶瑪蘭語 (新社)",
@@ -207,7 +207,7 @@ export default {
         Seediq_Tgdaya: {
           name: "賽德克語 (Tgdaya)",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=5&p=2",
-          ref: "宋麗梅。2018。《賽德克語語法概論》，台灣南島語言叢書5。原住民族委員會，台北。",
+          ref: "宋麗梅。2018。《賽德克語語法概論》，台灣南島語言叢書5。新北市：原住民族委員會。",
           },
         Tsou_Tsou: {
           name: "鄒語",
@@ -222,7 +222,7 @@ export default {
         Kanakanavu_Kanakanavu: {
           name: "卡那卡那富語",
           bookURL: "http://ilrdc.tw/grammar/index.php?l=15&p=2",
-          ref: "宋麗梅。2018。《卡那卡那富語語法概論》，台灣南島語言叢書16。原住民族委員會，台北。",
+          ref: "宋麗梅。2018。《卡那卡那富語語法概論》，台灣南島語言叢書16。新北市：原住民族委員會。",
           },
       },
     };
