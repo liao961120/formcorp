@@ -56,6 +56,7 @@ const messages = {
     "長度": "Recorded",
     "IU數": "IUs",
     "句數": "Sentences",
+    "詞彙數": "words",
     // Footer
     "樂學地址": "Lesyue Building, No. 1, Sec. 4, Roosevelt Rd., Taipei City, Taiwan (R.O.C.) 10617",
     "計畫負責人": "Li-May Sung (Project Leader)",
@@ -99,6 +100,7 @@ const messages = {
     "長度": "長度",
     "IU數": "IU數",
     "句數": "句數",
+    "詞彙數": "詞彙數",
     //Footer
     "樂學地址": "106 臺北市大安區羅斯福路四段一號 樂學館",
     "計畫負責人": "計畫負責人：宋麗梅",

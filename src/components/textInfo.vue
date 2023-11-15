@@ -71,6 +71,9 @@
                     class="router-link">
                       {{ text[k] }}
                     </router-link>
+
+                    <!-- Add another condition to where text.file.endsWith('/A1') (基本詞彙) -->
+
                     <router-link v-else-if="texttype == 'GrammarBook'" :to="{name: 'LongText', 
                     params: { id: `grammar/${text.file}` }, 
                     hash: '#'}"
@@ -83,7 +86,12 @@
                       {{ suffixGrammarBookCh3() }}
                     </span>
                   </template>
-                  <template v-else>{{ text[k] }}</template>
+                  <template v-else>{{ text[k] }}
+                    <template v-if="k == 'sent_num' && texttype == 'GrammarBook' && text.file.endsWith('/A2')">
+                    <span class="grey--text text--darken-1 text-caption">({{ $t("詞彙數") }})</span>
+                  </template>
+                  </template>
+                  
                 </td>
               </template>
             </tr>
