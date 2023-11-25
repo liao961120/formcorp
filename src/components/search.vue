@@ -279,7 +279,14 @@ export default {
       },
       infscroll: 15,
       ignoreCharSet: ",_/^’\\-='<>.:()".split(""),
-      proxyCharSet: [["ʉ", "u", "x"]],
+      proxyCharSet: [ 
+        ["ʉ", "u"],
+        ["á", "a"],
+        ["é", "e"],
+        ["í", "i"],
+        ["ó", "o"],
+        ["ú", "u"]
+      ],
     };
   },
   computed: {
