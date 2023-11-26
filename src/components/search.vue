@@ -30,6 +30,7 @@
             :placeholder="$t('搜尋字串')"
             :value="query_lazy"
             @change="(v) => (query_lazy = v)"
+            @keyup.enter="reportEmptyMatch"
             outlined
             dense
             class="mt-6"
@@ -94,7 +95,7 @@
         </v-col>
 
         <v-col class="mx-1 px-0" cols="2">
-          <v-btn small fab style="z-index: 5">
+          <v-btn small fab style="z-index: 5" @click="reportEmptyMatch">
             <v-badge
               offset-x="8"
               offset-y="8"
@@ -199,6 +200,7 @@ export default {
   },
   data() {
     return {
+      can_report_empty: true,
       search_results_key: 0,
       database: "https://yongfu.name/glossParser/all_lang.json",
       results: [],
@@ -442,9 +444,14 @@ export default {
       );
     },
     reportEmptyMatch: function() {
-      if (this.query.query.trim() != "" && this.is_empty_vue_search_results) {
-        alert("搜尋無果\nNo results found!");
+      if (!this.can_report_empty) return
+      let term = this.query.query.trim();
+      if (term != "" && this.is_empty_vue_search_results) {
+        alert(`語料庫查無「${term}」\nNo results found for: "${term}".`);
       }
+      // Avoid event conflicts by setting a period of inactivity
+      this.can_report_empty = false;
+      setTimeout(() => this.can_report_empty = true, 100);
     }
   },
 };
