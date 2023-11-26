@@ -383,6 +383,9 @@ export default {
     vue_seach_results_lazy: function () {
       return this.vue_seach_results.slice(0, this.infscroll);
     },
+    is_empty_vue_search_results: function() {
+      return this.vue_seach_results.length == 0;
+    },
     shareURL: function () {
       var baseURL = window.location.href.replace(/#\/.*$/, "");
       var p = {
@@ -406,6 +409,7 @@ export default {
       this.forceReload();
       this.infscroll = 15;
       document.documentElement.scrollTop = 0;
+      this.reportEmptyMatch(); 
     },
   },
   methods: {
@@ -437,6 +441,11 @@ export default {
         "已複製分享網址至剪貼簿\n使用此網址分享你的搜尋結果\nCopied share URL!\nUse this URL to share your current search results"
       );
     },
+    reportEmptyMatch: function() {
+      if (this.query.query.trim() != "" && this.is_empty_vue_search_results) {
+        alert("搜尋無果\nNo results found!");
+      }
+    }
   },
 };
 </script>
