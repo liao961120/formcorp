@@ -447,7 +447,7 @@ export default {
       if (!this.can_report_empty) return
       let term = this.query.query.trim();
       if (term != "" && this.is_empty_vue_search_results) {
-        alert(`語料庫查無「${term}」\nNo results found for: "${term}".`);
+        alert(`語料庫查無「${term}」\n"${term}" not found in corpus.`);
       }
       // Avoid event conflicts by setting a period of inactivity
       this.can_report_empty = false;
