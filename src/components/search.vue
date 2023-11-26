@@ -280,7 +280,7 @@ export default {
         ],
       },
       infscroll: 15,
-      ignoreCharSet: ",_/^’\\-='<>.:()".split(""),
+      ignoreCharSet: ",_/^’\\-='<>.:()́".split(""),
       proxyCharSet: [ 
         ["ʉ", "u"],
         ["á", "a"],
