@@ -64,6 +64,7 @@ export default {
   data() {
     return {
       text: {},
+      audio_server: "http://140.112.147.116:8080/",
       src: `https://yongfu.name/glossParser/${this.$route.params.id}.json`,
       filename: `${this.$route.params.id}`,
       currGroupNum: false,
@@ -77,7 +78,7 @@ export default {
       this.$http.get(this.src).then(function (data) {
         this.text = data.body;
         if ("video" in this.text.meta & this.text.meta.video != 'None')
-          this.full_text_audio = this.$audioMap[this.text.meta.video];
+          this.full_text_audio = this.audio_server + this.text.meta.video; //this.$audioMap[];
         // ToDo: Google API to get url filename match
         this.lastSentEndNum = this.text.glosses
           .map((x) => [x[0], x[1].s_end])
