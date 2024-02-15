@@ -102,7 +102,7 @@ export default {
   props: ["gloss", "glossNum", "lastSentEndNum"],
   data() {
     return {
-      audio_url: "http://140.112.147.116:8080/00_IU", // no slash at end
+      audio_url: "https://140.112.147.116:8080/00_IU", // no slash at end
       /* See https://yongfu.name/gloss-search/2020_Budai_Rukai/data.json for data format*/
       curr_audio: new Audio(),
     };

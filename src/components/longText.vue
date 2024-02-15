@@ -64,7 +64,7 @@ export default {
   data() {
     return {
       text: {},
-      audio_server: "http://140.112.147.116:8080/",
+      audio_server: "https://140.112.147.116:8080/",
       src: `https://yongfu.name/glossParser/${this.$route.params.id}.json`,
       filename: `${this.$route.params.id}`,
       currGroupNum: false,
