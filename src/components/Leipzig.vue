@@ -103,7 +103,8 @@ export default {
   props: ["gloss", "query", "showplaintext", "ignoreCharSet", "proxyCharSet"],
   data() {
     return {
-      audio_url: "https://yongfu.name/FormCorp-audio", // no slash at end
+      audio_url: "https://formosanbank.linguistics.ntu.edu.tw/files/audio/00_IU",
+      // "https://yongfu.name/FormCorp-audio", // no slash at end
       plain_text_gloss: "",
       /* See https://yongfu.name/gloss-search/2020_Budai_Rukai/data.json for data format*/
       curr_audio: new Audio(),
