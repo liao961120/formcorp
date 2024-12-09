@@ -59,7 +59,7 @@ const messages = {
     "詞彙數": "words",
     // Footer
     "樂學地址": "Lesyue Building, No. 1, Sec. 4, Roosevelt Rd., Taipei City, Taiwan (R.O.C.) 10617",
-    "計畫負責人": "Li-May Sung (Project Leader)",
+    "計畫負責人": "Li-May Sung (Project PI)",
     "電子郵件：": "Email: ",
     "電話：": "Phone: ",
     "傳真：": "Fax: ",
